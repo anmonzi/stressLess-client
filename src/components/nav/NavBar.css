@@ -1,3 +1,7 @@
+.menu-bars {
+    font-size: 1.5rem !important;
+}
+
 .navbar-header {
     margin-bottom: 8rem;
 }
@@ -30,4 +34,12 @@
 .nav-link:hover {
     background-color: #1a83ff;
     color: #fff;
+}
+
+.offcanvas-start {
+    width: 300px;
+}
+
+span {
+    margin-left: 1;
 }

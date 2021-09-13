@@ -1,14 +1,13 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import { Dashboard } from "./dashboard/Dashboard"
 
 
 export const ApplicationViews = () => {
     return <>
-        <main style={{
-            margin: "5rem 2rem",
-            backgroundColor: "lightgoldenrodyellow"
-        }}>
-            Application views
-        </main>
+        {/* Render user dashboard upon login */}
+        <Route exact path="/dashboard">
+            <Dashboard />
+        </Route>
     </>
 }

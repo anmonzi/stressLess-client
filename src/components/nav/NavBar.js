@@ -15,7 +15,7 @@ export const NavBar = () => {
   
     return (
       <>
-        <Button variant="primary" onClick={handleShow}>
+        <Button className="menu-bars" onClick={handleShow}>
           <FaIcons.FaBars />
         </Button>
   
@@ -26,16 +26,16 @@ export const NavBar = () => {
           <Offcanvas.Body className="navbar-body">
             <ul className="navbar">
               <li className="navbar__item">
-                <Link className="nav-link" to="/dashboard"><BsIcons.BsFillHouseDoorFill /> Dashboard</Link>
+                <Link className="nav-link" to="/dashboard" onClick={handleShow}><BsIcons.BsFillHouseDoorFill /> Dashboard</Link>
               </li>
               <li className="navbar__item">
-                <Link className="nav-link" to="/profile"><BsIcons.BsFillPersonFill /> User Profile</Link>
+                <Link className="nav-link" to="/profile" onClick={handleShow}><BsIcons.BsFillPersonFill /> User Profile</Link>
               </li>
               <li className="navbar__item">
-                <Link className="nav-link" to="/community"><BsIcons.BsChatDotsFill /> Community</Link>
+                <Link className="nav-link" to="/community" onClick={handleShow}><BsIcons.BsChatDotsFill /> Community</Link>
               </li>
               <li className="navbar__item">
-                <Link className="nav-link" to="/resources"><BsIcons.BsBook /> Resources</Link>
+                <Link className="nav-link" to="/resources" onClick={handleShow}><BsIcons.BsBook /> Resources</Link>
               </li>
               {
                   (localStorage.getItem("stressLess_user_id") !== null) ?
