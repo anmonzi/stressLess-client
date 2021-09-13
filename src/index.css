@@ -36,13 +36,18 @@ code {
     color: -webkit-link;
     cursor: pointer;
     text-decoration: underline;
-    background: none!important;
+    background: none;
+	padding: 0 32px;
+	margin-top: 10rem;
+    border-radius: 4px;
+	font-size: 18px;
     border: none;
     cursor: pointer;
+	height: 80%;
 }
 
 .fakeLink:hover {
-    font-weight: bold;
+    background-color: #1a83ff;
 }
 
 .nav-item {

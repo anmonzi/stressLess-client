@@ -79,14 +79,7 @@ fieldset {
     color: white;
 }
 
-.mario {
-    height: 15rem;
-}
 
-.mario:hover {
-	backface-visibility: visible !important;
-	animation: flip 2s ease infinite;
-}
 @keyframes flip {
 	0% {
 		transform: perspective(600px) rotateY(0);
@@ -121,12 +114,4 @@ fieldset {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.mario-flex {
-    position: fixed;
-    bottom: 1rem;
-    right: 8rem;
-    height: 40%;
-    z-index: -1;
 }

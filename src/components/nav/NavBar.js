@@ -4,7 +4,8 @@ import "./NavBar.css"
 import { Button, Offcanvas } from "react-bootstrap"
 import { useHistory } from "react-router"
 import * as FaIcons from "react-icons/fa"
-
+import * as FiIcons from "react-icons/fi"
+import * as BsIcons from "react-icons/bs"
 
 export const NavBar = () => {
     const [show, setShow] = useState(false);
@@ -19,29 +20,32 @@ export const NavBar = () => {
         </Button>
   
         <Offcanvas show={show} onHide={handleShow}>
-          <Offcanvas.Header closeButton>
+          <Offcanvas.Header closeButton className="navbar-header">
             <Offcanvas.Title>StressLess</Offcanvas.Title>
           </Offcanvas.Header>
-          <Offcanvas.Body>
+          <Offcanvas.Body className="navbar-body">
             <ul className="navbar">
               <li className="navbar__item">
-                  Navigation link
+                <Link className="nav-link" to="/dashboard"><BsIcons.BsFillHouseDoorFill /> Dashboard</Link>
               </li>
               <li className="navbar__item">
-                  Navigation link
+                <Link className="nav-link" to="/profile"><BsIcons.BsFillPersonFill /> User Profile</Link>
               </li>
               <li className="navbar__item">
-                  Navigation link
+                <Link className="nav-link" to="/community"><BsIcons.BsChatDotsFill /> Community</Link>
+              </li>
+              <li className="navbar__item">
+                <Link className="nav-link" to="/resources"><BsIcons.BsBook /> Resources</Link>
               </li>
               {
                   (localStorage.getItem("stressLess_user_id") !== null) ?
-                      <li className="nav-item">
+                      <li className="navbar__item">
                           <button className="nav-link fakeLink"
                               onClick={() => {
                                   localStorage.removeItem("stressLess_user_id")
                                   history.push({ pathname: "/" })
                               }}
-                          >Logout</button>
+                          >Logout <FiIcons.FiLogOut /></button>
                       </li> :
                       <>
                           <li className="nav-item">
