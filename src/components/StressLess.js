@@ -10,7 +10,7 @@ export const StressLess = () => (
         <Route render={() => {
             if (localStorage.getItem("stressLess_user_id")) {
                 return <>
-                    <Route render={NavBar} />
+                    <NavBar />
                     <Route render={props => <ApplicationViews {...props} />} />
                 </>
             } else {
