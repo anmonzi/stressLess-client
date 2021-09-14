@@ -76,12 +76,21 @@ return (
             <Col md={8}>
               <Form>
                 <Form.Group>
-                  <Form.Label>Create your new priority below</Form.Label>
+                    {
+                        (priorityId)
+                        ? <Form.Label>Edit your priority below</Form.Label>
+                        : <Form.Label>Create your new priority below</Form.Label>
+                    }
+                  
                   <Form.Control as="textarea" rows={3}
                   name="content" value={currentPriority.content}
                   onChange={handleUserInput} required autoFocus />
                 </Form.Group>
-                <Button type="submit" onClick={handleSavePriority}>Submit</Button>
+                {
+                    (priorityId)
+                    ? <Button type="submit" onClick={handleEditPriority}>Save</Button>
+                    : <Button type="submit" onClick={handleSavePriority}>Submit</Button>
+                }
                 <Button onClick={() => history.goBack()}>Back</Button>
               </Form>
             </Col>
