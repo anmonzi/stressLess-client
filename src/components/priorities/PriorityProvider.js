@@ -28,11 +28,35 @@ export const PriorityProvider = (props) => {
         .then()
     }
 
+    const editPriority = priority => {
+        return fetch(`http://localhost:8000/priorities/${priority.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${localStorage.getItem("stressLess_user_id")}`
+            },
+            body: JSON.stringify(priority)
+        })
+        .then(getPriorities)
+        .then()
+    }
+    
+    const getPriorityById = priorityId => {
+        return fetch(`http://localhost:8000/priorities/${priorityId}`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem("stressLess_user_id")}`
+            }
+        })
+        .then(res => res.json())
+    }
+
 
     return (
         <PriorityContext.Provider value={
             {
-                priorities, getPriorities, createPriority
+                priorities, getPriorities,
+                createPriority, editPriority,
+                getPriorityById
             }
         }>
             {props.children}

@@ -17,6 +17,10 @@ export const ApplicationViews = () => {
                 <Route exact path="/priority/new">
                     <PriorityForm />
                 </Route>
+
+                <Route exact path="/priority/:priorityId(\d+)/edit">
+                    <PriorityForm />
+                </Route>
             </PriorityProvider>
         </DashboardProvider>
     </>
