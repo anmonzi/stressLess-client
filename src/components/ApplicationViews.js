@@ -4,6 +4,8 @@ import { Dashboard } from "./dashboard/Dashboard"
 import { DashboardProvider } from "./dashboard/DashboardProvider"
 import { PriorityProvider } from "./priorities/PriorityProvider"
 import { PriorityForm } from "./priorities/PriorityForm"
+import { AchievementProvider } from "./achievements/AchievementsProvider"
+import { AchievementList } from "./achievements/AchievementList"
 
 export const ApplicationViews = () => {
     return <>
@@ -23,5 +25,12 @@ export const ApplicationViews = () => {
                 </Route>
             </PriorityProvider>
         </DashboardProvider>
+
+        {/* Render completed Priorities as Achievements for user history */}
+        <AchievementProvider>
+            <Route exact path="/achievements">
+                <AchievementList />
+            </Route>
+        </AchievementProvider>
     </>
 }

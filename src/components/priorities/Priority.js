@@ -8,23 +8,43 @@ import * as AiIcons from "react-icons/ai"
 
 export const Priority = ({ priorityObject }) => {
     // returns indivdual priorities to priority list
+    const { editPriority } = useContext(PriorityContext)
+    const currentUser = localStorage.getItem("stressLess_user_id")
     const history = useHistory()
+
+    const handleSuccessButton = (priorityId) => {
+        const priority = {
+            id: parseInt(priorityId),
+            app_user: currentUser,
+            content: priorityObject.content,
+            createdOn: priorityObject.created_on,
+            completed: true
+        }
+        // send PUT request to API to change completed value
+        editPriority(priority)
+            .then()
+    }
+
 
     return (
         <>
-        {priorityObject.owner
-        ? <>
-            <Card>
-                <Card.Body>
-                    <Card.Subtitle><div>{priorityObject.created_on}</div></Card.Subtitle>
-                    <Card.Text><div>{priorityObject.content}</div></Card.Text>
-                    <Card.Link onClick={() => {history.push(`/priority/${priorityObject.id}/edit`)}}>
-                        <AiIcons.AiFillEdit /></Card.Link>
-                    <Button>Success</Button>
-                </Card.Body>
-            </Card>
-          </>
-        : <></>}
+        {
+            (priorityObject.owner && priorityObject.completed === false)
+            ? <>
+                <Card>
+                    <Card.Body>
+                        <Card.Subtitle><div>{priorityObject.created_on}</div></Card.Subtitle>
+                        <Card.Text><div>{priorityObject.content}</div></Card.Text>
+                        <Card.Link onClick={() => {history.push(`/priority/${priorityObject.id}/edit`)}}>
+                            <AiIcons.AiFillEdit /></Card.Link>
+                        <Button onClick={() => {
+                            handleSuccessButton(priorityObject.id)
+                        }}>Success</Button>
+                    </Card.Body>
+                </Card>
+              </>
+            : <></>
+        }
         </>
     )
 }

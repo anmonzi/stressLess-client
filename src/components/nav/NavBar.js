@@ -35,6 +35,9 @@ export const NavBar = () => {
                 <Link className="nav-link" to="/community" onClick={handleShow}><BsIcons.BsChatDotsFill /> Community</Link>
               </li>
               <li className="navbar__item">
+                <Link className="nav-link" to="/achievements" onClick={handleShow}><BsIcons.BsAwardFill /> Achievements</Link>
+              </li>
+              <li className="navbar__item">
                 <Link className="nav-link" to="/resources" onClick={handleShow}><BsIcons.BsBook /> Resources</Link>
               </li>
               {
