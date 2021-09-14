@@ -23,12 +23,17 @@ export const AchievementList = () => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col> 
+                    <Col md={8}> 
                         {
                             achievements.map(achievement => {
                                 return <Achievement achievement={achievement} key={achievement.id} />
                             })
                         }
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Button onClick={() => history.goBack()}>Back</Button>
                     </Col>
                 </Row>
             </Container>

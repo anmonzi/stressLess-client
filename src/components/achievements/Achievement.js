@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react"
-import { PriorityContext } from "./PriorityProvider"
+import { AchievementContext } from "./AchievementsProvider"
 import { useHistory } from "react-router"
 import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import * as BsIcons from "react-icons/bs"
@@ -13,7 +13,7 @@ export const Achievement = ({ achievement }) => {
     return (
         <>
         {
-            (achievement.owner && achievement.complete === true)
+            (achievement.owner && achievement.completed === true)
             ? <>
                 <Card>
                     <Card.Body>

@@ -12,19 +12,21 @@ export const Priority = ({ priorityObject }) => {
 
     return (
         <>
-        {priorityObject.owner
-        ? <>
-            <Card>
-                <Card.Body>
-                    <Card.Subtitle><div>{priorityObject.created_on}</div></Card.Subtitle>
-                    <Card.Text><div>{priorityObject.content}</div></Card.Text>
-                    <Card.Link onClick={() => {history.push(`/priority/${priorityObject.id}/edit`)}}>
-                        <AiIcons.AiFillEdit /></Card.Link>
-                    <Button>Success</Button>
-                </Card.Body>
-            </Card>
-          </>
-        : <></>}
+        {
+            (priorityObject.owner && priorityObject.completed === false)
+            ? <>
+                <Card>
+                    <Card.Body>
+                        <Card.Subtitle><div>{priorityObject.created_on}</div></Card.Subtitle>
+                        <Card.Text><div>{priorityObject.content}</div></Card.Text>
+                        <Card.Link onClick={() => {history.push(`/priority/${priorityObject.id}/edit`)}}>
+                            <AiIcons.AiFillEdit /></Card.Link>
+                        <Button>Success</Button>
+                    </Card.Body>
+                </Card>
+              </>
+            : <></>
+        }
         </>
     )
 }
