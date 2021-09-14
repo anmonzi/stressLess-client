@@ -3,7 +3,7 @@ import React, { useState, createContext } from 'react'
 export const PriorityContext = createContext()
 
 export const PriorityProvider = (props) => {
-    const [priorities, setPriorities] = useState({})
+    const [priorities, setPriorities] = useState([])
 
     const getPriorities = () => {
         return fetch("http://localhost:8000/priorities", {
