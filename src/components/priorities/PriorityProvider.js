@@ -15,11 +15,24 @@ export const PriorityProvider = (props) => {
         .then(setPriorities)
     }
 
+    const createPriority = priorityObj => {
+        return fetch("http://localhost:8000/priorities", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${localStorage.getItem("stressLess_user_id")}`
+            },
+            body: JSON.stringify(priorityObj)
+        })
+        .then(getPriorities)
+        .then()
+    }
+
 
     return (
         <PriorityContext.Provider value={
             {
-                priorities, getPriorities
+                priorities, getPriorities, createPriority
             }
         }>
             {props.children}

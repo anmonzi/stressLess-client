@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react"
+import React, { useContext, useState } from "react"
 import { PriorityContext } from "./PriorityProvider"
 import { useHistory, useParams } from 'react-router'
 import { Form, Container, Row, Col, Button } from "react-bootstrap"
@@ -7,7 +7,7 @@ import { DateTime } from "luxon"
 
 
 export const PriorityForm = () => {
-    const {} = useContext(PriorityContext)
+    const { createPriority } = useContext(PriorityContext)
     const history = useHistory()
     const currentUser = localStorage.getItem("stressLess_user_id")
     const now = DateTime.now()
@@ -30,12 +30,13 @@ export const PriorityForm = () => {
         event.preventDefault()
 
         const newPriority = {
-            appUser: currentUser,
+            app_user: currentUser,
             content: currentPriority.content,
-            createdOn: now.toISO(),
+            createdOn: now.toISODate(),
             completed: false
         }
-        // createPriority(newPriority)
+        createPriority(newPriority)
+            .then(() => history.push("/dashboard"))
     }
 
     return (
@@ -50,7 +51,7 @@ export const PriorityForm = () => {
                   name="content" value={currentPriority.content}
                   onChange={handleUserInput} required autoFocus />
                 </Form.Group>
-                <Button type="submit">Submit</Button>
+                <Button type="submit" onClick={handleSavePriority}>Submit</Button>
                 <Button onClick={() => history.goBack()}>Back</Button>
               </Form>
             </Col>
