@@ -6,23 +6,27 @@ import { PriorityProvider } from "./priorities/PriorityProvider"
 import { PriorityForm } from "./priorities/PriorityForm"
 import { AchievementProvider } from "./achievements/AchievementsProvider"
 import { AchievementList } from "./achievements/AchievementList"
+import { ReflectionProvider } from "./reflections/ReflectionProvider"
+
 
 export const ApplicationViews = () => {
     return <>
         {/* Render user dashboard upon login */}
         <DashboardProvider>
             <PriorityProvider>
-                <Route exact path="/dashboard">
-                    <Dashboard />
-                </Route>
+                <ReflectionProvider>
+                    <Route exact path="/dashboard">
+                        <Dashboard />
+                    </Route>
 
-                <Route exact path="/priority/new">
-                    <PriorityForm />
-                </Route>
+                    <Route exact path="/priority/new">
+                        <PriorityForm />
+                    </Route>
 
-                <Route exact path="/priority/:priorityId(\d+)/edit">
-                    <PriorityForm />
-                </Route>
+                    <Route exact path="/priority/:priorityId(\d+)/edit">
+                        <PriorityForm />
+                    </Route>
+                </ReflectionProvider>
             </PriorityProvider>
         </DashboardProvider>
 
