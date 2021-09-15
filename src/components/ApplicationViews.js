@@ -7,6 +7,7 @@ import { PriorityForm } from "./priorities/PriorityForm"
 import { AchievementProvider } from "./achievements/AchievementsProvider"
 import { AchievementList } from "./achievements/AchievementList"
 import { ReflectionProvider } from "./reflections/ReflectionProvider"
+import { CommunityFeed } from "./community/CommunityFeed"
 
 
 export const ApplicationViews = () => {
@@ -36,5 +37,10 @@ export const ApplicationViews = () => {
                 <AchievementList />
             </Route>
         </AchievementProvider>
+
+        {/* Render community feed here (posts & comments) */}
+        <Route exact path="/community">
+            <CommunityFeed />
+        </Route>
     </>
 }
