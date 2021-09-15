@@ -20,7 +20,9 @@ export const Achievement = ({ achievement }) => {
                     <Card.Body>
                         <Card.Subtitle><div>{achievement.created_on}</div></Card.Subtitle>
                         <Card.Text><div>{achievement.content}</div></Card.Text>
-                        <Button>Delete</Button>
+                        <Button onClick={() => {
+                            deleteAchievement(achievement.id)
+                        }}>Delete</Button>
                     </Card.Body>
                 </Card>
               </>
