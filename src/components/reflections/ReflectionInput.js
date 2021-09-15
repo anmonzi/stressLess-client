@@ -32,15 +32,20 @@ export const ReflectionInput = () => {
             content: currentReflection.content,
             createdOn: now.toISODate()
         }
-        // send POST request to API
-        createReflection(newReflection)
-            .then(() => {
-                setCurrentReflection({
-                    appUser: currentUser,
-                    content: "",
-                    createdOn: ""
+
+        if (currentReflection.content === "") {
+            return
+        } else {
+            // send POST request to API
+            createReflection(newReflection)
+                .then(() => {
+                    setCurrentReflection({
+                        appUser: currentUser,
+                        content: "",
+                        createdOn: ""
+                    })
                 })
-            })
+        }
     }
 
     return (

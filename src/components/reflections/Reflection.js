@@ -8,7 +8,7 @@ import * as BsIcons from "react-icons/bs"
 
 export const Reflection = ({ reflectionObj }) => {
     // returns individual reflections to reflection list
-
+    const { deleteReflection } = useContext(ReflectionContext)
     
     
     return (
@@ -20,7 +20,9 @@ export const Reflection = ({ reflectionObj }) => {
                         <Card.Body>
                             <Card.Subtitle><div>{reflectionObj.created_on}</div></Card.Subtitle>
                             <Card.Text><div>{reflectionObj.content}</div></Card.Text>
-                            <Card.Link><BsIcons.BsTrashFill/></Card.Link>
+                            <Card.Link onClick={() => {
+                                deleteReflection(reflectionObj.id)
+                            }}><BsIcons.BsTrashFill/></Card.Link>
                         </Card.Body>
                     </Card>
                   </>
