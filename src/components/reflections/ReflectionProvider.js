@@ -15,6 +15,19 @@ export const ReflectionProvider = (props) => {
         .then(setReflections)
     }
 
+    const createReflection = reflectionObj => {
+        return fetch("http://localhost:8000/reflections", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${localStorage.getItem("stressLess_user_id")}`
+            },
+            body: JSON.stringify(reflectionObj)
+        })
+        .then(getReflections)
+        .then()
+    }
+
     const deleteReflection = reflectionId => {
         return fetch(`http://localhost:8000/reflections/${reflectionId}`, {
             method: "DELETE",
@@ -30,7 +43,7 @@ export const ReflectionProvider = (props) => {
         <ReflectionContext.Provider value={
             {
                 reflections, getReflections,
-                deleteReflection
+                deleteReflection, createReflection
             }
         }>
             {props.children}
