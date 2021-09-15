@@ -8,6 +8,7 @@ import * as AiIcons from "react-icons/ai"
 
 export const Achievement = ({ achievement }) => {
     // returns indivdual achievements to achievement list
+    const { deleteAchievement } = useContext(AchievementContext)
     const history = useHistory()
 
     return (

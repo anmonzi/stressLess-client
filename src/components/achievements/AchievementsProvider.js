@@ -15,13 +15,22 @@ export const AchievementProvider = (props) => {
         .then(setAchievement)
     }
 
-    // TODO: create deleteAchievement for deleting a priority to complete CRUD
+    const deleteAchievement = priorityId => {
+        return fetch(`http://localhost:8000/priorities/${priorityId}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Token ${localStorage.getItem("stressLess_user_id")}`
+            }
+        })
+        .then(getAchievements)
+    }
 
 
     return (
         <AchievementContext.Provider value={
             {
-                achievements, getAchievements
+                achievements, getAchievements,
+                deleteAchievement
             }
         }>
             {props.children}
