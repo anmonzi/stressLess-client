@@ -62,13 +62,13 @@ export const PostProvider = (props) => {
 
 
     return (
-        <PriorityContext.Provider value={
+        <PostContext.Provider value={
             {
                 posts, getPosts, createPost,
                 editPost, getPostById, deletePost
             }
         }>
             {props.children}
-        </PriorityContext.Provider>
+        </PostContext.Provider>
     )
 }
