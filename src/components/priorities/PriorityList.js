@@ -13,6 +13,10 @@ export const PriorityList = () => {
         getPriorities()
     }, [])
 
+    const sortedPriorities = priorities.sort((a, b) => {
+        return b.created_on.localeCompare(a.created_on)
+    })
+
 
     return (
         <>
@@ -30,7 +34,7 @@ export const PriorityList = () => {
                     <Col> 
                         Your Current Priorities:
                         {
-                            priorities.map(priority => {
+                            sortedPriorities.map(priority => {
                                 return <Priority priorityObject={priority} key={priority.id} />
                             })
                         }
