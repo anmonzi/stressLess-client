@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from "react"
 import { DashboardContext } from "./DashboardProvider"
 import { PriorityList } from "../priorities/PriorityList"
+import { ReflectionList } from "../reflections/ReflectionList.js"
 import { Container, Row, Col } from "react-bootstrap"
 import "./Dashboard.css"
 
@@ -20,7 +21,7 @@ export const Dashboard = () => {
                 </Row>
                 <Row>
                     <Col sm={12} md={6}> <PriorityList/> </Col>
-                    <Col sm={12} md={6}>Quick Reflections - reflections component</Col>
+                    <Col sm={12} md={6}> <ReflectionList/> </Col>
                 </Row>
             </Container>
         </>
