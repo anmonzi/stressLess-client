@@ -20,7 +20,7 @@ export const CommunityFeed = () => {
                     <Col>
                         <Button 
                             variant="secondary"
-                            onClick={() => {history.push("/priority/new")}}>
+                            onClick={() => {history.push("/post/new")}}>
                                 What's on your mind?
                         </Button>
                     </Col>

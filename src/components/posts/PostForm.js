@@ -85,7 +85,7 @@ return (
                     }
                   
                   <Form.Control as="textarea" rows={3}
-                  name="content" value={currentPriority.content}
+                  name="content" value={currentPost.content}
                   onChange={handleUserInput} required autoFocus />
                 </Form.Group>
                 {
