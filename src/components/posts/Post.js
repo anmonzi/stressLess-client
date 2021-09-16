@@ -37,7 +37,7 @@ export const Post = ({ postObject }) => {
                     <Card.Link onClick={() => setShowMe(!showMe)}>Comments</Card.Link>
                     {
                         (showMe)
-                        ? <><CommentList/></>
+                        ? <><CommentList postId={postObject.id}/></>
                         : null
                     }
                 </Card.Body>
