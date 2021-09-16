@@ -49,6 +49,10 @@ export const ApplicationViews = () => {
             <Route exact path="/post/new">
                 <PostForm />
             </Route>
+
+            <Route exact path="/post/:postId(\d+)/edit">
+                <PostForm />
+            </Route>
         </PostProvider>
     </>
 }
