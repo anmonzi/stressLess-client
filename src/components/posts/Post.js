@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from "react"
 import { PostContext } from "./PostProvider"
+import { CommentList } from "../comments/CommentList"
 import { useHistory } from 'react-router'
 import { Container, Row, Col, Button, Card } from "react-bootstrap"
 import { DateTime } from "luxon"
@@ -11,6 +12,8 @@ export const Post = ({ postObject }) => {
     // returns individual posts to post list
     const { deletePost } = useContext(PostContext)
     const history = useHistory()
+
+    const [ showMe, setShowMe ] = useState(false)
     
     return (
         <>
@@ -30,6 +33,12 @@ export const Post = ({ postObject }) => {
                             }}><BsIcons.BsTrashFill/></Card.Link>
                           </>
                         : <></>
+                    }
+                    <Card.Link onClick={() => setShowMe(!showMe)}>Comments</Card.Link>
+                    {
+                        (showMe)
+                        ? <><CommentList postId={postObject.id}/></>
+                        : null
                     }
                 </Card.Body>
             </Card> 
