@@ -21,18 +21,19 @@ export const PostForm = () => {
         publicationDate: ""
     })
 
-    // useEffect(() => {
-    //     if (postId) {
-    //         getPostById(postId).then(post => {
-    //             setCurrentPost({
-    //             appUser: priority.app_user,
-    //             content: priority.content,
-    //             createdOn: priority.created_on,
-    //             completed: priority.completed
-    //           })
-    //       })
-    //     }
-    // }, [postId])
+    useEffect(() => {
+        if (postId) {
+            getPostById(postId).then(post => {
+                setCurrentPost({
+                appUser: post.app_user,
+                title: post.title,
+                content: post.content,
+                imageURL: post.image_url,
+                publicationDate: post.publication_date
+              })
+          })
+        }
+    }, [postId])
 
     const handleUserInput = (event) => {
         const newPostState = {...currentPost}
@@ -55,21 +56,22 @@ export const PostForm = () => {
             .then(() => history.push("/community"))
     }
 
-    // const handleEditPriority = (event) => {
-    //     event.preventDefault()
+    const handleEditPost = (event) => {
+        event.preventDefault()
 
-    //     const priority = {
-    //         id: parseInt(priorityId),
-    //         app_user: currentUser,
-    //         content: currentPriority.content,
-    //         createdOn: now.toISODate(),
-    //         completed: false
-    //     }
-    //     // send PUT request to API
-    //     editPriority(priority)
-    //         .then(() => history.push("/dashboard"))
+        const post = {
+            id: parseInt(postId),
+            app_user: currentUser,
+            title: currentPost.title,
+            content: currentPost.content,
+            imageURL: currentPost.imageURL,
+            publicationDate: now.toISO()
+        }
+        // send PUT request to API
+        editPost(post)
+            .then(() => history.push("/community"))
 
-    // }
+    }
 
 return (
       <>
@@ -103,7 +105,7 @@ return (
                 </Form.Group>
                 {
                     (postId)
-                    ? <Button type="submit">Save</Button>
+                    ? <Button type="submit" onClick={handleEditPost}>Save</Button>
                     : <Button type="submit" onClick={handleSavePost}>Submit</Button>
                 }
                 <Button onClick={() => history.goBack()}>Back</Button>
