@@ -11,6 +11,8 @@ export const Post = ({ postObject }) => {
     // returns individual posts to post list
     const { deletePost } = useContext(PostContext)
     const history = useHistory()
+
+    const [ showMe, setShowMe ] = useState(false)
     
     return (
         <>
@@ -30,6 +32,12 @@ export const Post = ({ postObject }) => {
                             }}><BsIcons.BsTrashFill/></Card.Link>
                           </>
                         : <></>
+                    }
+                    <Card.Link onClick={() => setShowMe(!showMe)}>Comments</Card.Link>
+                    {
+                        (showMe)
+                        ? <><div>Comment Component HERE</div></>
+                        : null
                     }
                 </Card.Body>
             </Card> 
