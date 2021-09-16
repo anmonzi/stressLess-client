@@ -34,12 +34,21 @@ export const Post = ({ postObject }) => {
                           </>
                         : <></>
                     }
-                    <Card.Link onClick={() => setShowMe(!showMe)}>Comments</Card.Link>
+                    <Card.Link onClick={() => setShowMe(!showMe)}>
+                        {
+                            (postObject.comment_count > 1 || postObject.comment_count === 0)
+                            ? <><div>{postObject.comment_count} Comments</div></>
+                            : <><div>{postObject.comment_count} Comment</div></>
+                        }
+                    </Card.Link>
                     {
                         (showMe)
                         ? <><CommentList postId={postObject.id}/></>
                         : null
                     }
+                </Card.Body>
+                <Card.Body>
+                    <Button>Comment</Button>
                 </Card.Body>
             </Card> 
         </>
