@@ -10,6 +10,7 @@ import { ReflectionProvider } from "./reflections/ReflectionProvider"
 import { CommunityFeed } from "./community/CommunityFeed"
 import { PostProvider } from "./posts/PostProvider"
 import { PostForm } from "./posts/PostForm"
+import { CommentProvider } from "./comments/CommentProvider"
 
 
 export const ApplicationViews = () => {
@@ -42,17 +43,19 @@ export const ApplicationViews = () => {
 
         {/* Render community feed here (posts & comments) */}
         <PostProvider>
-            <Route exact path="/community">
-                <CommunityFeed />
-            </Route>
+            <CommentProvider>
+                <Route exact path="/community">
+                    <CommunityFeed />
+                </Route>
 
-            <Route exact path="/post/new">
-                <PostForm />
-            </Route>
+                <Route exact path="/post/new">
+                    <PostForm />
+                </Route>
 
-            <Route exact path="/post/:postId(\d+)/edit">
-                <PostForm />
-            </Route>
+                <Route exact path="/post/:postId(\d+)/edit">
+                    <PostForm />
+                </Route>
+            </CommentProvider>
         </PostProvider>
     </>
 }

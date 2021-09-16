@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from "react"
 import { PostContext } from "./PostProvider"
+import { CommentList } from "../comments/CommentList"
 import { useHistory } from 'react-router'
 import { Container, Row, Col, Button, Card } from "react-bootstrap"
 import { DateTime } from "luxon"
@@ -36,7 +37,7 @@ export const Post = ({ postObject }) => {
                     <Card.Link onClick={() => setShowMe(!showMe)}>Comments</Card.Link>
                     {
                         (showMe)
-                        ? <><div>Comment Component HERE</div></>
+                        ? <><CommentList/></>
                         : null
                     }
                 </Card.Body>
