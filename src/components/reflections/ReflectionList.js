@@ -13,6 +13,9 @@ export const ReflectionList = () => {
         getReflections()
     }, [])
 
+    const sortedReflections = reflections.sort((a, b) => {
+        return b.created_on.localeCompare(a.created_on)
+    })
 
     return (
         <>
@@ -24,7 +27,7 @@ export const ReflectionList = () => {
                     <Col>
                         <ReflectionInput/>
                         {
-                            reflections.map(reflection => {
+                            sortedReflections.map(reflection => {
                                 return <Reflection reflectionObj={reflection} key={reflection.id} />
                             })
                         }
