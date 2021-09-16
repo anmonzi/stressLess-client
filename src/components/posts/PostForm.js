@@ -48,7 +48,7 @@ export const PostForm = () => {
             title: currentPost.title,
             content: currentPost.content,
             imageURL: currentPost.imageURL,
-            publicationDate: now.toISODate()
+            publicationDate: now.toISO()
         }
         // send POST request to API
         createPost(newPost)

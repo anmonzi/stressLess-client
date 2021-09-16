@@ -45,7 +45,7 @@ export const PriorityForm = () => {
         const newPriority = {
             app_user: currentUser,
             content: currentPriority.content,
-            createdOn: now.toISODate(),
+            createdOn: now.toISO(),
             completed: false
         }
         // send POST request to API
@@ -60,7 +60,7 @@ export const PriorityForm = () => {
             id: parseInt(priorityId),
             app_user: currentUser,
             content: currentPriority.content,
-            createdOn: now.toISODate(),
+            createdOn: now.toISO(),
             completed: false
         }
         // send PUT request to API
