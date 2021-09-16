@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react"
 import { useHistory } from "react-router"
 import { PostList } from "../posts/PostList"
 import { Container, Row, Col, Button } from "react-bootstrap"
+import Swal from "sweetalert2"
 
 
 
