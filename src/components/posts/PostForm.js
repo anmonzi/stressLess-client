@@ -83,10 +83,23 @@ return (
                         ? <Form.Label>Edit Your Post</Form.Label>
                         : <Form.Label>Create Post</Form.Label>
                     }
-                  
-                  <Form.Control as="textarea" rows={3}
-                  name="content" value={currentPost.content}
-                  onChange={handleUserInput} required autoFocus />
+                    <Form.Group className="mb-3">
+                        <Form.Control type="text" placeholder="Your Post Title"
+                            name="title" value={currentPost.title} onChange={handleUserInput}
+                            required autoFocus
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Control as="textarea" rows={3}
+                        name="content" value={currentPost.content}
+                        onChange={handleUserInput} placeholder="What's on your mind?" required autoFocus
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Control type="text" placeholder="Add Image Here"
+                            name="imageURL" value={currentPost.imageURL} onChange={handleUserInput}
+                        />
+                    </Form.Group>
                 </Form.Group>
                 {
                     (postId)
