@@ -25,8 +25,9 @@ export const Post = ({ postObject }) => {
                         ? <>
                             <Card.Link onClick={() => {history.push(`/post/${postObject.id}/edit`)}}>
                                 <AiIcons.AiFillEdit /></Card.Link>
-                            <Card.Link onClick={() => deletePost(postObject.id)}>
-                                <BsIcons.BsTrashFill/></Card.Link>
+                            <Card.Link onClick={() => {
+                                deletePost(postObject.id)
+                            }}><BsIcons.BsTrashFill/></Card.Link>
                           </>
                         : <></>
                     }
