@@ -12,9 +12,10 @@ export const Post = ({ postObject }) => {
         <>
             <Card>
                 <Card.Body>
-                    <Card.Title>{postObject.title}</Card.Title>
                     <Card.Subtitle><div>{postObject.publication_date}</div></Card.Subtitle>
+                    <Card.Title>{postObject.title}</Card.Title>
                     <Card.Text><div>{postObject.content}</div></Card.Text>
+                    <Card.Img src={postObject.image_url} />
                 </Card.Body>
             </Card> 
         </>

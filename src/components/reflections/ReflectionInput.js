@@ -30,7 +30,7 @@ export const ReflectionInput = () => {
         const newReflection = {
             appUser: currentUser,
             content: currentReflection.content,
-            createdOn: now.toISODate()
+            createdOn: now.toISO()
         }
 
         if (currentReflection.content === "") {

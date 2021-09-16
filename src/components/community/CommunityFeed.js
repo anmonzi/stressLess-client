@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react"
 import { useHistory } from "react-router"
 import { PostList } from "../posts/PostList"
 import { Container, Row, Col, Button } from "react-bootstrap"
+import Swal from "sweetalert2"
 
 
 
@@ -19,7 +20,7 @@ export const CommunityFeed = () => {
                     <Col>
                         <Button 
                             variant="secondary"
-                            onClick={() => {history.push("/priority/new")}}>
+                            onClick={() => {history.push("/post/new")}}>
                                 What's on your mind?
                         </Button>
                     </Col>
