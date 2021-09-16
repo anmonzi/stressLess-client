@@ -10,6 +10,14 @@ import * as AiIcons from "react-icons/ai"
 export const Comment = ({ commentObj, post }) => {
     // returns individual comment to comment list
 
+    // making date readable to humans
+    // const monthDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
+    const date = new Date(commentObj.created_on)
+    const monthDate = { weekday: 'long', month: 'short', day: 'numeric'}
+    const time = { hour: 'numeric', minute: 'numeric' }
+    const humanMonthDate = date.toLocaleDateString('en-US', monthDate)
+    const humanTime = date.toLocaleString('en-US', time)
+
     return (
         <>
             {
@@ -17,7 +25,7 @@ export const Comment = ({ commentObj, post }) => {
                 ? <Card>
                     <Card.Body>
                         <Card.Subtitle>{commentObj.app_user?.full_name}</Card.Subtitle>
-                        <Card.Subtitle>{commentObj.created_on}</Card.Subtitle>
+                        <Card.Subtitle>{humanMonthDate} at {humanTime}</Card.Subtitle>
                         <Card.Text>{commentObj.content}</Card.Text>
                     </Card.Body>
                  </Card>

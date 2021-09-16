@@ -9,6 +9,14 @@ import * as BsIcons from "react-icons/bs"
 export const Reflection = ({ reflectionObj }) => {
     // returns individual reflections to reflection list
     const { deleteReflection } = useContext(ReflectionContext)
+
+    // making date readable to humans
+    // const monthDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
+    const date = new Date(reflectionObj.created_on)
+    const monthDate = { weekday: 'long' }
+    const time = { hour: 'numeric', minute: 'numeric' }
+    const humanMonthDate = date.toLocaleDateString('en-US', monthDate)
+    const humanTime = date.toLocaleString('en-US', time)
     
     
     return (
@@ -18,7 +26,7 @@ export const Reflection = ({ reflectionObj }) => {
                 ? <>
                     <Card>
                         <Card.Body>
-                            <Card.Subtitle><div>{reflectionObj.created_on}</div></Card.Subtitle>
+                            <Card.Subtitle><div>{humanMonthDate} at {humanTime}</div></Card.Subtitle>
                             <Card.Text><div>{reflectionObj.content}</div></Card.Text>
                             <Card.Link onClick={() => {
                                 deleteReflection(reflectionObj.id)

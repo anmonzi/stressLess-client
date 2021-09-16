@@ -3,7 +3,7 @@ import { PostContext } from "./PostProvider"
 import { CommentList } from "../comments/CommentList"
 import { useHistory } from 'react-router'
 import { Container, Row, Col, Button, Card } from "react-bootstrap"
-import { DateTime } from "luxon"
+import { DateTime, HumanDate } from "luxon"
 import * as BsIcons from "react-icons/bs"
 import * as AiIcons from "react-icons/ai"
 
@@ -13,13 +13,23 @@ export const Post = ({ postObject }) => {
     const { deletePost } = useContext(PostContext)
     const history = useHistory()
 
-    const [ showMe, setShowMe ] = useState(false)
+    const [ showComment, setShowComment ] = useState(false)
+    const [ showCommentInput, setShowCommentInput ] = useState(false)
+    const [ showButton, setShowButton ] = useState(true)
+
+    // making date readable to humans
+    // const monthDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
+    const date = new Date(postObject.publication_date)
+    const monthDate = { month: 'long', day: 'numeric'}
+    const time = { hour: 'numeric', minute: 'numeric' }
+    const humanMonthDate = date.toLocaleDateString('en-US', monthDate)
+    const humanTime = date.toLocaleString('en-US', time)
     
     return (
         <>
             <Card>
                 <Card.Body>
-                    <Card.Subtitle><div>{postObject.publication_date}</div></Card.Subtitle>
+                    <Card.Subtitle><div>{humanMonthDate} at {humanTime}</div></Card.Subtitle>
                     <Card.Title>{postObject.title}</Card.Title>
                     <Card.Text><div>{postObject.content}</div></Card.Text>
                     <Card.Img src={postObject.image_url} />
@@ -34,7 +44,7 @@ export const Post = ({ postObject }) => {
                           </>
                         : <></>
                     }
-                    <Card.Link onClick={() => setShowMe(!showMe)}>
+                    <Card.Link onClick={() => setShowComment(!showComment)}>
                         {
                             (postObject.comment_count > 0)
                             ? <><div>{postObject.comment_count} Comments</div></>
@@ -42,13 +52,33 @@ export const Post = ({ postObject }) => {
                         }
                     </Card.Link>
                     {
-                        (showMe)
+                        (showComment)
                         ? <><CommentList postId={postObject.id}/></>
                         : null
                     }
                 </Card.Body>
                 <Card.Body>
-                    <Button>Comment</Button>
+                    {
+                        (showButton)
+                        ? <Button onClick={() => {
+                            setShowButton(!showButton)
+                            setShowCommentInput(!showCommentInput)
+                          }}>Comment</Button>
+                        : null
+                    }
+
+                    {
+                        (showCommentInput)
+                        ? <>
+                            <div>COMMENT INPUT COMPONENT HERE</div>
+                            <Button onClick={() => {
+                                setShowCommentInput(!showCommentInput)
+                                setShowButton(!showButton)
+                            }}>Submit</Button>
+                          </>
+                        : null
+                    }
+                    
                 </Card.Body>
             </Card> 
         </>

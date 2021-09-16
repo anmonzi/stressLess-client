@@ -22,7 +22,6 @@ export const CommentList = ({ postId }) => {
             <Container>
                 <Row>
                     <Col>
-                        Comments will list here:
                         {
                             sortedComments.map(comment => {
                                 return <Comment commentObj={comment} post={postId} key={comment.id} />
