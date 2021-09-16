@@ -1,4 +1,5 @@
 import React, { useEffect, useContext, useState } from "react"
+import { PostContext } from "./PostProvider"
 import { useHistory } from 'react-router'
 import { Container, Row, Col, Button, Card } from "react-bootstrap"
 import { DateTime } from "luxon"
@@ -8,6 +9,7 @@ import * as AiIcons from "react-icons/ai"
 
 export const Post = ({ postObject }) => {
     // returns individual posts to post list
+    const { deletePost } = useContext(PostContext)
     const history = useHistory()
     
     return (
@@ -23,7 +25,8 @@ export const Post = ({ postObject }) => {
                         ? <>
                             <Card.Link onClick={() => {history.push(`/post/${postObject.id}/edit`)}}>
                                 <AiIcons.AiFillEdit /></Card.Link>
-                            <Card.Link><BsIcons.BsTrashFill/></Card.Link>
+                            <Card.Link onClick={() => deletePost(postObject.id)}>
+                                <BsIcons.BsTrashFill/></Card.Link>
                           </>
                         : <></>
                     }
