@@ -75,7 +75,8 @@ export const Post = ({ postObject }) => {
                         (showCommentInput)
                         ? <>
                             <CommentForm inputCollapse={setShowCommentInput} 
-                                buttonHide={setShowButton} post={postObject}/>
+                                buttonHide={setShowButton} post={postObject}
+                                commentShow={setShowComments}/>
                           </>
                         : null
                     }

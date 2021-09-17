@@ -8,7 +8,7 @@ import { faTemperatureLow } from "@fortawesome/free-solid-svg-icons"
 
 
 
-export const CommentForm = ({ inputCollapse, buttonHide, post }) => {
+export const CommentForm = ({ inputCollapse, buttonHide, post, commentShow }) => {
     const { createComment, editComment, getCommentById } = useContext(CommentContext)
     const { getPosts } = useContext(PostContext)
     const history = useHistory()
@@ -54,7 +54,10 @@ export const CommentForm = ({ inputCollapse, buttonHide, post }) => {
                 }).then(() => {
                     buttonHide(true)
                     inputCollapse(!inputCollapse)
-                }).then(() => { getPosts() })
+                }).then(() => {
+                    getPosts()
+                    commentShow(true)
+                })
         }
     }
 
