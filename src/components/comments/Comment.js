@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from "react"
 import { CommentContext } from "./CommentProvider"
 import { useHistory } from 'react-router'
-import { Container, Row, Col, Button, Card } from "react-bootstrap"
+import { Container, Row, Col, Button, Card, Form } from "react-bootstrap"
 import { DateTime } from "luxon"
 import * as BsIcons from "react-icons/bs"
 import * as AiIcons from "react-icons/ai"
@@ -9,6 +9,10 @@ import * as AiIcons from "react-icons/ai"
 
 export const Comment = ({ commentObj, post }) => {
     // returns individual comment to comment list
+    const { editComment, getCommentById } = useContext(CommentContext)
+    const currentUser = localStorage.getItem("stressLess_user_id")
+    const now = DateTime.now()
+    const postId = post
 
     // making date readable to humans
     // const monthDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
@@ -18,6 +22,53 @@ export const Comment = ({ commentObj, post }) => {
     const humanMonthDate = date.toLocaleDateString('en-US', monthDate)
     const humanTime = date.toLocaleString('en-US', time)
 
+    const [ edit, setEdit ] = useState(false)
+
+    const [ currentComment, setCurrentComment ] = useState({
+        postId: postId,
+        appUser: currentUser,
+        content: "",
+        createdOn: ""
+    })
+
+
+    useEffect(() => {
+        if (edit === true) {
+            getCommentById(commentObj.id).then(comment => {
+                setCurrentComment({
+                    postId: comment.post_id,
+                    appUser: comment.app_user,
+                    content: comment.content,
+                    createdOn: comment.created_on
+                })
+            })
+        }
+    }, [edit])
+
+
+    const handleUserInput = (event) => {
+        const newCommentState = {...currentComment}
+        newCommentState[event.target.name] = event.target.value
+        setCurrentComment(newCommentState)
+    }
+
+    const handleEditComment = (event) => {
+        event.preventDefault()
+
+        const comment = {
+            id: commentObj.id,
+            postId: postId,
+            appUser: currentUser,
+            content: currentComment.content,
+            createdOn: currentComment.createdOn
+        }
+        // send PUT request to API
+        editComment(comment)
+            .then(() => {
+                setEdit(false)
+            })
+    }
+
     return (
         <>
             {
@@ -26,7 +77,43 @@ export const Comment = ({ commentObj, post }) => {
                     <Card.Body>
                         <Card.Subtitle>{commentObj.app_user?.full_name}</Card.Subtitle>
                         <Card.Subtitle>{humanMonthDate} at {humanTime}</Card.Subtitle>
-                        <Card.Text>{commentObj.content}</Card.Text>
+                        {/* ternary to show comment OR if EDIT is TRUE, show comment input form to edit comment */}
+                        {
+                            (edit)
+                            ? <>
+                                <Container>
+                                    <Row>
+                                        <Col>
+                                            <Form>
+                                                <Form.Group>
+                                                    <Form.Control as="textarea" rows={4}
+                                                    name="content" value={currentComment.content}
+                                                    onChange={handleUserInput} required/>
+                                                    <Button onClick={handleEditComment}>Save</Button>
+                                                    <Button onClick={() => 
+                                                        setEdit(!edit)}>Cancel</Button>
+                                                </Form.Group>
+                                            </Form>
+                                        </Col>
+                                    </Row>
+                                </Container>
+                                {console.log(commentObj.id)}
+                              </>
+                            : <>
+                                <Card.Text>{commentObj.content}</Card.Text>
+                              </>
+                        }
+                        {/* show edit and delete buttons if user is OWNER and edit is FALSE */}
+                        {
+                            (commentObj.owner && edit === false)
+                            ? <>
+                                <Button><BsIcons.BsTrashFill/></Button>
+                                <Button onClick={() => 
+                                    setEdit(!edit)
+                                }><AiIcons.AiFillEdit/></Button>
+                              </>
+                            : null
+                        } 
                     </Card.Body>
                  </Card>
                 : null
@@ -34,3 +121,6 @@ export const Comment = ({ commentObj, post }) => {
         </>
     )
 }
+
+//TODO: edit through modal? if not figure out how to seed data into comment form
+//TODO: add sweetalert modal to delete function for comments and POSTS

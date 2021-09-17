@@ -4,12 +4,11 @@ import { PostContext } from "../posts/PostProvider"
 import { useHistory } from 'react-router'
 import { Container, Row, Col, Button, Form } from "react-bootstrap"
 import { DateTime } from "luxon"
-import { faTemperatureLow } from "@fortawesome/free-solid-svg-icons"
 
 
 
 export const CommentForm = ({ inputCollapse, buttonHide, post, commentShow }) => {
-    const { createComment, editComment, getCommentById } = useContext(CommentContext)
+    const { createComment } = useContext(CommentContext)
     const { getPosts } = useContext(PostContext)
     const history = useHistory()
     const currentUser = localStorage.getItem("stressLess_user_id")
@@ -73,6 +72,10 @@ export const CommentForm = ({ inputCollapse, buttonHide, post, commentShow }) =>
                                 name="content" value={currentComment.content}
                                 onChange={handleUserInput} required/>
                                 <Button onClick={handleSaveComment}>Submit</Button>
+                                <Button onClick={() => {
+                                    buttonHide(true)
+                                    inputCollapse(!inputCollapse)
+                                }}>Cancel</Button>
                             </Form.Group>
                         </Form>
                     </Col>
