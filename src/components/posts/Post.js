@@ -1,9 +1,10 @@
 import React, { useEffect, useContext, useState } from "react"
 import { PostContext } from "./PostProvider"
 import { CommentList } from "../comments/CommentList"
+import { CommentForm } from "../comments/CommentForm"
 import { useHistory } from 'react-router'
 import { Container, Row, Col, Button, Card } from "react-bootstrap"
-import { DateTime, HumanDate } from "luxon"
+import { DateTime } from "luxon"
 import * as BsIcons from "react-icons/bs"
 import * as AiIcons from "react-icons/ai"
 
@@ -13,7 +14,7 @@ export const Post = ({ postObject }) => {
     const { deletePost } = useContext(PostContext)
     const history = useHistory()
 
-    const [ showComment, setShowComment ] = useState(false)
+    const [ showComments, setShowComments ] = useState(false)
     const [ showCommentInput, setShowCommentInput ] = useState(false)
     const [ showButton, setShowButton ] = useState(true)
 
@@ -25,6 +26,9 @@ export const Post = ({ postObject }) => {
     const humanMonthDate = date.toLocaleDateString('en-US', monthDate)
     const humanTime = date.toLocaleString('en-US', time)
     
+
+    //TODO: Hook up sweetalert to deletePost function!
+
     return (
         <>
             <Card>
@@ -44,7 +48,7 @@ export const Post = ({ postObject }) => {
                           </>
                         : <></>
                     }
-                    <Card.Link onClick={() => setShowComment(!showComment)}>
+                    <Card.Link onClick={() => setShowComments(!showComments)}>
                         {
                             (postObject.comment_count > 0)
                             ? <><div>{postObject.comment_count} Comments</div></>
@@ -52,7 +56,7 @@ export const Post = ({ postObject }) => {
                         }
                     </Card.Link>
                     {
-                        (showComment)
+                        (showComments)
                         ? <><CommentList postId={postObject.id}/></>
                         : null
                     }
@@ -70,11 +74,7 @@ export const Post = ({ postObject }) => {
                     {
                         (showCommentInput)
                         ? <>
-                            <div>COMMENT INPUT COMPONENT HERE</div>
-                            <Button onClick={() => {
-                                setShowCommentInput(!showCommentInput)
-                                setShowButton(!showButton)
-                            }}>Submit</Button>
+                            <CommentForm inputCollapse={setShowCommentInput} buttonHide={setShowButton}/>
                           </>
                         : null
                     }
@@ -86,3 +86,4 @@ export const Post = ({ postObject }) => {
 }
 
 
+//TODO: pass setShowCommentInput and setShowButton state to comment input component
