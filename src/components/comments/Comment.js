@@ -1,17 +1,18 @@
 import React, { useEffect, useContext, useState } from "react"
 import { CommentContext } from "./CommentProvider"
+import { PostContext } from "../posts/PostProvider"
 import { useHistory } from 'react-router'
 import { Container, Row, Col, Button, Card, Form } from "react-bootstrap"
-import { DateTime } from "luxon"
 import * as BsIcons from "react-icons/bs"
 import * as AiIcons from "react-icons/ai"
+import Swal from "sweetalert2"
 
 
 export const Comment = ({ commentObj, post }) => {
     // returns individual comment to comment list
-    const { editComment, getCommentById } = useContext(CommentContext)
+    const { editComment, getCommentById, deleteComment } = useContext(CommentContext)
+    const { getPosts } = useContext(PostContext)
     const currentUser = localStorage.getItem("stressLess_user_id")
-    const now = DateTime.now()
     const postId = post
 
     // making date readable to humans
@@ -21,9 +22,9 @@ export const Comment = ({ commentObj, post }) => {
     const time = { hour: 'numeric', minute: 'numeric' }
     const humanMonthDate = date.toLocaleDateString('en-US', monthDate)
     const humanTime = date.toLocaleString('en-US', time)
-
+    // setting edit comment state
     const [ edit, setEdit ] = useState(false)
-
+    // setting initial comment state
     const [ currentComment, setCurrentComment ] = useState({
         postId: postId,
         appUser: currentUser,
@@ -69,6 +70,31 @@ export const Comment = ({ commentObj, post }) => {
             })
     }
 
+    const handleDeleteComment = (commentId) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You will not be able to undo!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "Ah, cancel"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              deleteComment(commentId).then(() => {
+                Swal.fire(
+                  "Deleted!",
+                  "Your comment has been deleted.",
+                  "Success!"
+                ).then(() => {
+                    getPosts()
+                })
+              })
+            }; 
+        })
+    }
+
+    
+
     return (
         <>
             {
@@ -107,7 +133,9 @@ export const Comment = ({ commentObj, post }) => {
                         {
                             (commentObj.owner && edit === false)
                             ? <>
-                                <Button><BsIcons.BsTrashFill/></Button>
+                                <Button onClick={() => {
+                                    handleDeleteComment(commentObj.id)
+                                }}><BsIcons.BsTrashFill/></Button>
                                 <Button onClick={() => 
                                     setEdit(!edit)
                                 }><AiIcons.AiFillEdit/></Button>
@@ -121,6 +149,3 @@ export const Comment = ({ commentObj, post }) => {
         </>
     )
 }
-
-//TODO: edit through modal? if not figure out how to seed data into comment form
-//TODO: add sweetalert modal to delete function for comments and POSTS
