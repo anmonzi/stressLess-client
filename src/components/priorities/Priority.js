@@ -12,6 +12,14 @@ export const Priority = ({ priorityObject }) => {
     const currentUser = localStorage.getItem("stressLess_user_id")
     const history = useHistory()
 
+    // making date readable to humans
+    // const monthDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
+    const date = new Date(priorityObject.created_on)
+    const monthDate = { weekday: 'long', month: 'short', day: 'numeric'}
+    const time = { hour: 'numeric', minute: 'numeric' }
+    const humanMonthDate = date.toLocaleDateString('en-US', monthDate)
+    const humanTime = date.toLocaleString('en-US', time)
+
     const handleSuccessButton = (priorityId) => {
         const priority = {
             id: parseInt(priorityId),
@@ -33,7 +41,7 @@ export const Priority = ({ priorityObject }) => {
             ? <>
                 <Card>
                     <Card.Body>
-                        <Card.Subtitle><div>{priorityObject.created_on}</div></Card.Subtitle>
+                        <Card.Subtitle><div>{humanMonthDate} at {humanTime}</div></Card.Subtitle>
                         <Card.Text><div>{priorityObject.content}</div></Card.Text>
                         <Card.Link onClick={() => {history.push(`/priority/${priorityObject.id}/edit`)}}>
                             <AiIcons.AiFillEdit /></Card.Link>

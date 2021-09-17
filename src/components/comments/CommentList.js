@@ -14,7 +14,7 @@ export const CommentList = ({ postId }) => {
     }, [])
 
     const sortedComments = comments.sort((a, b) => {
-        return b.created_on.localeCompare(a.created_on)
+        return a.created_on.localeCompare(b.created_on)
     })
 
     return (
@@ -22,7 +22,6 @@ export const CommentList = ({ postId }) => {
             <Container>
                 <Row>
                     <Col>
-                        Comments will list here:
                         {
                             sortedComments.map(comment => {
                                 return <Comment commentObj={comment} post={postId} key={comment.id} />

@@ -11,6 +11,11 @@ export const Achievement = ({ achievement }) => {
     const { deleteAchievement } = useContext(AchievementContext)
     const history = useHistory()
 
+    // making date readable to humans
+    const date = new Date(achievement.created_on)
+    const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric'}
+    const humanDate = date.toLocaleDateString('en-US', options)
+
     return (
         <>
         {
@@ -18,7 +23,7 @@ export const Achievement = ({ achievement }) => {
             ? <>
                 <Card>
                     <Card.Body>
-                        <Card.Subtitle><div>{achievement.created_on}</div></Card.Subtitle>
+                        <Card.Subtitle><div>{humanDate}</div></Card.Subtitle>
                         <Card.Text><div>{achievement.content}</div></Card.Text>
                         <Button onClick={() => {
                             deleteAchievement(achievement.id)
