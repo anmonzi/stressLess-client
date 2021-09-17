@@ -14,11 +14,10 @@ export const Priority = ({ priorityObject }) => {
 
     // making date readable to humans
     // const monthDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
-    const date = new Date(priorityObject.created_on)
-    const monthDate = { weekday: 'long', month: 'short', day: 'numeric'}
-    const time = { hour: 'numeric', minute: 'numeric' }
+    const date = new Date(priorityObject.created_on.replace(/-/g, '\/').replace(/T.+/, ''))
+    const monthDate = { month: 'long', day: 'numeric'}
     const humanMonthDate = date.toLocaleDateString('en-US', monthDate)
-    const humanTime = date.toLocaleString('en-US', time)
+    
 
     const handleSuccessButton = (priorityId) => {
         const priority = {
@@ -41,7 +40,7 @@ export const Priority = ({ priorityObject }) => {
             ? <>
                 <Card>
                     <Card.Body>
-                        <Card.Subtitle><div>{humanMonthDate} at {humanTime}</div></Card.Subtitle>
+                        <Card.Subtitle><div>{humanMonthDate}</div></Card.Subtitle>
                         <Card.Text><div>{priorityObject.content}</div></Card.Text>
                         <Card.Link onClick={() => {history.push(`/priority/${priorityObject.id}/edit`)}}>
                             <AiIcons.AiFillEdit /></Card.Link>
