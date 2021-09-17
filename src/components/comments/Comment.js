@@ -31,11 +31,6 @@ export const Comment = ({ commentObj, post }) => {
         createdOn: ""
     })
 
-    const handleUserInput = (event) => {
-        const newCommentState = {...currentComment}
-        newCommentState[event.target.name] = event.target.value
-        setCurrentComment(newCommentState)
-    }
 
     useEffect(() => {
         if (edit === true) {
@@ -49,6 +44,30 @@ export const Comment = ({ commentObj, post }) => {
             })
         }
     }, [edit])
+
+
+    const handleUserInput = (event) => {
+        const newCommentState = {...currentComment}
+        newCommentState[event.target.name] = event.target.value
+        setCurrentComment(newCommentState)
+    }
+
+    const handleEditComment = (event) => {
+        event.preventDefault()
+
+        const comment = {
+            id: commentObj.id,
+            postId: postId,
+            appUser: currentUser,
+            content: currentComment.content,
+            createdOn: currentComment.createdOn
+        }
+        // send PUT request to API
+        editComment(comment)
+            .then(() => {
+                setEdit(false)
+            })
+    }
 
     return (
         <>
@@ -67,17 +86,18 @@ export const Comment = ({ commentObj, post }) => {
                                         <Col>
                                             <Form>
                                                 <Form.Group>
-                                                    <Form.Label>Write a comment..</Form.Label>
-                                                    <Form.Control as="textarea" rows={1}
+                                                    <Form.Control as="textarea" rows={4}
                                                     name="content" value={currentComment.content}
                                                     onChange={handleUserInput} required/>
-                                                    <Button>Submit</Button>
-                                                    <Button onClick={() => setEdit(!edit)}>Cancel</Button>
+                                                    <Button onClick={handleEditComment}>Save</Button>
+                                                    <Button onClick={() => 
+                                                        setEdit(!edit)}>Cancel</Button>
                                                 </Form.Group>
                                             </Form>
                                         </Col>
                                     </Row>
                                 </Container>
+                                {console.log(commentObj.id)}
                               </>
                             : <>
                                 <Card.Text>{commentObj.content}</Card.Text>
