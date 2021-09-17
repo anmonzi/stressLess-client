@@ -14,7 +14,7 @@ export const CommentList = ({ postId }) => {
     }, [])
 
     const sortedComments = comments.sort((a, b) => {
-        return b.created_on.localeCompare(a.created_on)
+        return a.created_on.localeCompare(b.created_on)
     })
 
     return (

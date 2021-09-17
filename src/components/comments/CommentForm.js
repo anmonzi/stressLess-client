@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from "react"
 import { CommentContext } from "./CommentProvider"
+import { PostContext } from "../posts/PostProvider"
 import { useHistory } from 'react-router'
 import { Container, Row, Col, Button, Form } from "react-bootstrap"
 import { DateTime } from "luxon"
@@ -9,6 +10,7 @@ import { faTemperatureLow } from "@fortawesome/free-solid-svg-icons"
 
 export const CommentForm = ({ inputCollapse, buttonHide, post }) => {
     const { createComment, editComment, getCommentById } = useContext(CommentContext)
+    const { getPosts } = useContext(PostContext)
     const history = useHistory()
     const currentUser = localStorage.getItem("stressLess_user_id")
     const now = DateTime.now()
@@ -52,7 +54,7 @@ export const CommentForm = ({ inputCollapse, buttonHide, post }) => {
                 }).then(() => {
                     buttonHide(true)
                     inputCollapse(!inputCollapse)
-                })
+                }).then(() => { getPosts() })
         }
     }
 
