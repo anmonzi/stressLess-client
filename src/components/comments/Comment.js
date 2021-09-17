@@ -27,6 +27,15 @@ export const Comment = ({ commentObj, post }) => {
                         <Card.Subtitle>{commentObj.app_user?.full_name}</Card.Subtitle>
                         <Card.Subtitle>{humanMonthDate} at {humanTime}</Card.Subtitle>
                         <Card.Text>{commentObj.content}</Card.Text>
+                        {
+                            (commentObj.owner)
+                            ? <>
+                                <Button><BsIcons.BsTrashFill/></Button>
+                                <Button><AiIcons.AiFillEdit/></Button>
+                              </>
+                            : null
+                        }
+                        
                     </Card.Body>
                  </Card>
                 : null
