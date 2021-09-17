@@ -7,11 +7,12 @@ import { Container, Row, Col, Button, Card } from "react-bootstrap"
 import { DateTime } from "luxon"
 import * as BsIcons from "react-icons/bs"
 import * as AiIcons from "react-icons/ai"
+import Swal from "sweetalert2"
 
 
 export const Post = ({ postObject }) => {
     // returns individual posts to post list
-    const { deletePost } = useContext(PostContext)
+    const { deletePost, getPosts } = useContext(PostContext)
     const history = useHistory()
 
     const [ showComments, setShowComments ] = useState(false)
@@ -27,7 +28,29 @@ export const Post = ({ postObject }) => {
     const humanTime = date.toLocaleString('en-US', time)
     
 
-    //TODO: Hook up sweetalert to deletePost function!
+    const handleDeletePost = (postId) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You will not be able to undo!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "Ah, cancel"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              deletePost(postId).then(() => {
+                Swal.fire(
+                  "Deleted!",
+                  "Your comment has been deleted.",
+                  "Success!"
+                ).then(() => {
+                    
+                })
+              })
+            }; 
+        })
+    }
+    
 
     return (
         <>
@@ -43,7 +66,7 @@ export const Post = ({ postObject }) => {
                             <Card.Link onClick={() => {history.push(`/post/${postObject.id}/edit`)}}>
                                 <AiIcons.AiFillEdit /></Card.Link>
                             <Card.Link onClick={() => {
-                                deletePost(postObject.id)
+                                handleDeletePost(postObject.id)
                             }}><BsIcons.BsTrashFill/></Card.Link>
                           </>
                         : <></>
@@ -88,4 +111,4 @@ export const Post = ({ postObject }) => {
 }
 
 
-//TODO: pass setShowCommentInput and setShowButton state to comment input component
+//TODO: pass setShowCommentInput and setShowButton state to comment form component as props
