@@ -56,6 +56,7 @@ export const Post = ({ postObject }) => {
         <>
             <Card>
                 <Card.Body>
+                    <Card.Subtitle>{postObject.app_user?.full_name}</Card.Subtitle>
                     <Card.Subtitle><div>{humanMonthDate} at {humanTime}</div></Card.Subtitle>
                     <Card.Title>{postObject.title}</Card.Title>
                     <Card.Text><div>{postObject.content}</div></Card.Text>
