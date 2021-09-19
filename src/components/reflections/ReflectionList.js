@@ -25,6 +25,7 @@ export const ReflectionList = () => {
                 </Row>
                 <Row>
                     <Col>
+                    <h4>Quick Reflections Of Your Day:</h4>
                         <ReflectionInput/>
                         {
                             sortedReflections.map(reflection => {

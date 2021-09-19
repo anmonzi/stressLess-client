@@ -14,7 +14,9 @@ export const CommunityFeed = () => {
         <>
             <Container>
                 <Row>
-                    <Col>Welcome to the StressLess Community Feed!</Col>
+                    <Col>
+                        <h2>Welcome to the StressLess Community Feed!</h2>
+                    </Col>
                 </Row>
                 <Row>
                     <Col>

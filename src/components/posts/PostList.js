@@ -23,7 +23,6 @@ export const PostList = () => {
             <Container>
                 <Row>
                     <Col> 
-                        Your Current Posts:
                         {
                             sortedPosts.map(post => {
                                 return <Post postObject={post} key={post.id} />

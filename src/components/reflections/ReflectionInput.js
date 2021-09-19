@@ -55,10 +55,9 @@ export const ReflectionInput = () => {
                     <Col>
                         <Form>
                             <Form.Group>
-                                <Form.Label>What's up?</Form.Label>
                                 <Form.Control as="textarea" rows={3}
                                 name="content" value={currentReflection.content}
-                                onChange={handleUserInput} required/>
+                                onChange={handleUserInput} placeholder="What's up?" required/>
                                 <Button type="submit" onClick={handleSaveReflection}>Submit</Button>
                             </Form.Group>
                         </Form>

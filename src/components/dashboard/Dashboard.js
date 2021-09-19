@@ -17,7 +17,10 @@ export const Dashboard = () => {
         <>
             <Container className="dashboard-container">
                 <Row>
-                    <Col>Welcome to StressLess, {dashboard.app_user?.full_name}</Col>
+                    <Col 
+                    className="dashboard-welcome">
+                        <h2>Welcome to StressLess, {dashboard.app_user?.full_name}</h2>
+                    </Col>
                 </Row>
                 <Row>
                     <Col sm={12} md={6}> <PriorityList/> </Col>

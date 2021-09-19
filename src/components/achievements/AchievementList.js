@@ -19,11 +19,12 @@ export const AchievementList = () => {
             <Container>
                 <Row>
                     <Col>
-                        Hey! You're doing a great job. Check out your achievements!
+                        <h2>Your Achievements</h2>
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={8}> 
+                    <Col md={8}>
+                        <h4>Hey! You're doing a great job. Check out your achievements!</h4>
                         {
                             achievements.map(achievement => {
                                 return <Achievement achievement={achievement} key={achievement.id} />

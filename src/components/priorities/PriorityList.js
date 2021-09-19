@@ -23,6 +23,7 @@ export const PriorityList = () => {
             <Container>
                 <Row>
                     <Col>
+                        <h4>Your Current Priorities:</h4>
                         <Button 
                             variant="outline-secondary"
                             onClick={() => {history.push("/priority/new")}}>
@@ -32,7 +33,6 @@ export const PriorityList = () => {
                 </Row>
                 <Row>
                     <Col> 
-                        Your Current Priorities:
                         {
                             sortedPriorities.map(priority => {
                                 return <Priority priorityObject={priority} key={priority.id} />
