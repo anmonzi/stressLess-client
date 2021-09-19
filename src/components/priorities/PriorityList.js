@@ -23,16 +23,18 @@ export const PriorityList = () => {
             <Container>
                 <Row>
                     <Col>
-                        <Button 
-                            variant="outline-secondary"
-                            onClick={() => {history.push("/priority/new")}}>
-                                Make New Priority
-                        </Button>
+                        <h4>Your Current Priorities:</h4>
                     </Col>
                 </Row>
                 <Row>
-                    <Col> 
-                        Your Current Priorities:
+                    <Col>
+                        <Row>
+                            <Button 
+                                variant="outline-secondary"
+                                onClick={() => {history.push("/priority/new")}}>
+                                    Make New Priority
+                            </Button>
+                        </Row>
                         {
                             sortedPriorities.map(priority => {
                                 return <Priority priorityObject={priority} key={priority.id} />

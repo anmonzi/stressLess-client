@@ -4,6 +4,7 @@ import { Reflection } from "./Reflection"
 import { useHistory } from 'react-router'
 import { Container, Row, Col, Button, Form } from "react-bootstrap"
 import { DateTime } from "luxon"
+import "./Reflection.css"
 
 
 
@@ -52,14 +53,15 @@ export const ReflectionInput = () => {
         <>
             <Container>
                 <Row>
-                    <Col>
+                    <Col className="form-input">
                         <Form>
                             <Form.Group>
-                                <Form.Label>What's up?</Form.Label>
                                 <Form.Control as="textarea" rows={3}
                                 name="content" value={currentReflection.content}
-                                onChange={handleUserInput} required/>
-                                <Button type="submit" onClick={handleSaveReflection}>Submit</Button>
+                                onChange={handleUserInput} placeholder="What's up?" required/>
+                                <Form.Group className="post-form-btn-group">
+                                    <Button type="submit" className="post-form-btn" onClick={handleSaveReflection}>Submit</Button>
+                                </Form.Group>
                             </Form.Group>
                         </Form>
                     </Col>

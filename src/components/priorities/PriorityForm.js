@@ -72,26 +72,33 @@ export const PriorityForm = () => {
 return (
       <>
         <Container>
-          <Row>
-            <Col md={8}>
+          <Row className="priority-form">
+            <Col xs={10} md={8}>
               <Form>
                 <Form.Group>
                     {
                         (priorityId)
-                        ? <Form.Label>Edit your priority below</Form.Label>
-                        : <Form.Label>Create your new priority below</Form.Label>
+                        ? <Form.Label className="post-form-label"><h2>Edit your priority below</h2></Form.Label>
+                        : <Form.Label className="post-form-label"><h2>Create your new priority below</h2></Form.Label>
                     }
                   
                   <Form.Control as="textarea" rows={3}
                   name="content" value={currentPriority.content}
                   onChange={handleUserInput} required autoFocus />
                 </Form.Group>
-                {
-                    (priorityId)
-                    ? <Button type="submit" onClick={handleEditPriority}>Save</Button>
-                    : <Button type="submit" onClick={handleSavePriority}>Submit</Button>
-                }
-                <Button onClick={() => history.goBack()}>Back</Button>
+                <Form.Group className="post-form-btn-group">
+                  {
+                      (priorityId)
+                      ? <>
+                          <Button type="submit" className="post-form-btn" onClick={handleEditPriority}>Save</Button>
+                          <Button className="post-form-btn" onClick={() => history.goBack()}>Back</Button>
+                        </>
+                      : <>
+                          <Button type="submit" className="post-form-btn" onClick={handleSavePriority}>Submit</Button>
+                          <Button className="post-form-btn" onClick={() => history.goBack()}>Back</Button>
+                        </>
+                  }
+                </Form.Group>
               </Form>
             </Col>
           </Row>

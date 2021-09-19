@@ -1,0 +1,13 @@
+.priority-form {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-icon {
+    font-size: 20px;
+    margin-right: 1rem;
+}
+
+.edit-icon:hover {
+    cursor: pointer;
+}
