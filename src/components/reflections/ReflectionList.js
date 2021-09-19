@@ -21,9 +21,6 @@ export const ReflectionList = () => {
         <>
             <Container>
                 <Row>
-                    <Col></Col>
-                </Row>
-                <Row>
                     <Col>
                     <h4>Quick Reflections Of Your Day:</h4>
                         <ReflectionInput/>

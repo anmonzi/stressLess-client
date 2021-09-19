@@ -3,6 +3,7 @@ import { AchievementContext } from "./AchievementsProvider"
 import { useHistory } from 'react-router'
 import { Achievement } from "./Achievement"
 import { Container, Row, Col, Button } from "react-bootstrap"
+import "./Achievement.css"
 
 
 export const AchievementList = () => {
@@ -22,18 +23,14 @@ export const AchievementList = () => {
                         <h2>Your Achievements</h2>
                     </Col>
                 </Row>
-                <Row>
-                    <Col md={8}>
+                <Row className="achievment-container">
+                    <Col xs={10} md={8}>
                         <h4>Hey! You're doing a great job. Check out your achievements!</h4>
                         {
                             achievements.map(achievement => {
                                 return <Achievement achievement={achievement} key={achievement.id} />
                             })
                         }
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
                         <Button onClick={() => history.goBack()}>Back</Button>
                     </Col>
                 </Row>

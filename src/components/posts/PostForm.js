@@ -78,7 +78,7 @@ return (
       <>
         <Container>
           <Row className="post-form-container">
-            <Col md={8}>
+            <Col xs={10} md={8}>
               <Form>
                 <Form.Group>
                     {

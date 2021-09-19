@@ -26,11 +26,13 @@ export const Reflection = ({ reflectionObj }) => {
                 ? <>
                     <Card>
                         <Card.Body>
-                            <Card.Subtitle className="text-muted"><div>{humanMonthDate} at {humanTime}</div></Card.Subtitle>
+                            <Card.Subtitle className="text-muted card-sub"><div>{humanMonthDate} at {humanTime}</div></Card.Subtitle>
                             <Card.Text><div>{reflectionObj.content}</div></Card.Text>
-                            <Card.Link onClick={() => {
-                                deleteReflection(reflectionObj.id)
-                            }}><BsIcons.BsTrashFill/></Card.Link>
+                            <Card.Body className="post-btn-group">
+                                <Card.Link className="edit-icon" onClick={() => {
+                                    deleteReflection(reflectionObj.id)
+                                }}><BsIcons.BsTrashFill/></Card.Link>
+                            </Card.Body>
                         </Card.Body>
                     </Card>
                   </>
