@@ -12,7 +12,7 @@
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: start;
     height: 60%;
 }
 

@@ -36,7 +36,7 @@ code {
 .fakeLink {
     color: -webkit-link;
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
     background: none;
 	padding: 0 32px;
 	margin-top: 10rem;
