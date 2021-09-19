@@ -11,7 +11,7 @@
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     height: 60%;
 }
 
@@ -38,6 +38,14 @@
 
 .offcanvas-start {
     width: 300px;
+}
+
+.nav-icon {
+    margin-right: 1rem;
+}
+
+.nav-logout {
+    margin-left: 1rem;
 }
 
 span {

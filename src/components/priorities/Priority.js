@@ -4,6 +4,7 @@ import { useHistory } from "react-router"
 import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import * as BsIcons from "react-icons/bs"
 import * as AiIcons from "react-icons/ai"
+import "./Priority.css"
 
 
 export const Priority = ({ priorityObject }) => {

@@ -26,19 +26,24 @@ export const NavBar = () => {
           <Offcanvas.Body className="navbar-body">
             <ul className="navbar">
               <li className="navbar__item">
-                <Link className="nav-link" to="/dashboard" onClick={handleShow}><BsIcons.BsFillHouseDoorFill /> Dashboard</Link>
+                <Link className="nav-link" to="/dashboard"
+                  onClick={handleShow}><BsIcons.BsFillHouseDoorFill className="nav-icon" /> Dashboard</Link>
               </li>
               <li className="navbar__item">
-                <Link className="nav-link" to="/profile" onClick={handleShow}><BsIcons.BsFillPersonFill /> User Profile</Link>
+                <Link className="nav-link" to="/profile"
+                  onClick={handleShow}><BsIcons.BsFillPersonFill className="nav-icon" /> User Profile</Link>
               </li>
               <li className="navbar__item">
-                <Link className="nav-link" to="/community" onClick={handleShow}><BsIcons.BsChatDotsFill /> Community</Link>
+                <Link className="nav-link" to="/community"
+                  onClick={handleShow}><BsIcons.BsChatDotsFill className="nav-icon" /> Community</Link>
               </li>
               <li className="navbar__item">
-                <Link className="nav-link" to="/achievements" onClick={handleShow}><BsIcons.BsAwardFill /> Achievements</Link>
+                <Link className="nav-link" to="/achievements"
+                  onClick={handleShow}><BsIcons.BsAwardFill className="nav-icon" /> Achievements</Link>
               </li>
               <li className="navbar__item">
-                <Link className="nav-link" to="/resources" onClick={handleShow}><BsIcons.BsBook /> Resources</Link>
+                <Link className="nav-link" to="/resources"
+                  onClick={handleShow}><BsIcons.BsBook className="nav-icon" /> Resources</Link>
               </li>
               {
                   (localStorage.getItem("stressLess_user_id") !== null) ?
@@ -48,7 +53,7 @@ export const NavBar = () => {
                                   localStorage.removeItem("stressLess_user_id")
                                   history.push({ pathname: "/" })
                               }}
-                          >Logout <FiIcons.FiLogOut /></button>
+                          >Logout <FiIcons.FiLogOut className="nav-logout" /></button>
                       </li> :
                       <>
                           <li className="nav-item">
