@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from "react"
 import { useHistory } from "react-router"
 import { PostList } from "../posts/PostList"
 import { Container, Row, Col, Button } from "react-bootstrap"
-import Swal from "sweetalert2"
+import "./CommunityFeed.css"
 
 
 
@@ -14,10 +14,12 @@ export const CommunityFeed = () => {
         <>
             <Container>
                 <Row>
-                    <Col>Welcome to the StressLess Community Feed!</Col>
+                    <Col>
+                        <h2>Welcome to the StressLess Community Feed!</h2>
+                    </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col className="post-button-col">
                         <Button 
                             variant="secondary"
                             onClick={() => {history.push("/post/new")}}>
@@ -26,7 +28,9 @@ export const CommunityFeed = () => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col sm={12} md={8}><PostList/></Col>
+                    <Col>
+                        <PostList/>
+                    </Col>
                 </Row>
             </Container>
         </>

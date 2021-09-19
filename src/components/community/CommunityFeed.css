@@ -1,0 +1,18 @@
+.post-button-col {
+    display: flex;
+    justify-content: center;
+}
+
+.post-form-label {
+    display: flex;
+    justify-content: center;
+}
+
+.post-form-btn-group {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.post-form-btn {
+    margin: 1rem 2rem;
+}

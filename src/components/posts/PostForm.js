@@ -3,6 +3,7 @@ import { PostContext } from "./PostProvider"
 import { useHistory, useParams } from 'react-router'
 import { Form, Container, Row, Col, Button } from "react-bootstrap"
 import { DateTime } from "luxon"
+import "./Post.css"
 
 
 
@@ -76,14 +77,14 @@ export const PostForm = () => {
 return (
       <>
         <Container>
-          <Row>
-            <Col md={8}>
+          <Row className="post-form-container">
+            <Col xs={10} md={8}>
               <Form>
                 <Form.Group>
                     {
                         (postId)
-                        ? <Form.Label>Edit Your Post</Form.Label>
-                        : <Form.Label>Create Post</Form.Label>
+                        ? <Form.Label className="post-form-label"><h2>Edit Your Post</h2></Form.Label>
+                        : <Form.Label className="post-form-label"><h2>Create Post</h2></Form.Label>
                     }
                     <Form.Group className="mb-3">
                         <Form.Control type="text" placeholder="Your Post Title"
@@ -92,7 +93,7 @@ return (
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control as="textarea" rows={3}
+                        <Form.Control className="mb-3" as="textarea" rows={3}
                         name="content" value={currentPost.content}
                         onChange={handleUserInput} placeholder="What's on your mind?" required autoFocus
                         />
@@ -103,12 +104,20 @@ return (
                         />
                     </Form.Group>
                 </Form.Group>
-                {
-                    (postId)
-                    ? <Button type="submit" onClick={handleEditPost}>Save</Button>
-                    : <Button type="submit" onClick={handleSavePost}>Submit</Button>
-                }
-                <Button onClick={() => history.goBack()}>Back</Button>
+                <Form.Group className="post-form-btn-group">
+                    {
+                        (postId)
+                        ? <>
+                            <Button type="submit" className="post-form-btn" onClick={handleEditPost}>Save</Button>
+                            <Button className="post-form-btn" onClick={() => history.goBack()}>Back</Button>
+                          </>
+                        : <>
+                            <Button type="submit" className="post-form-btn" onClick={handleSavePost}>Submit</Button>
+                            <Button className="post-form-btn" onClick={() => history.goBack()}>Back</Button>
+                        </>
+                    }
+                    
+                </Form.Group>
               </Form>
             </Col>
           </Row>

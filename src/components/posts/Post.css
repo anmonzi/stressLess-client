@@ -1,0 +1,29 @@
+.post-container {
+    display: flex;
+    justify-content: center;
+}
+
+.post-form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.card-title {
+    margin-top: 2rem;
+}
+
+.post-btn-group {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.comment-count:hover {
+    cursor: pointer;
+}

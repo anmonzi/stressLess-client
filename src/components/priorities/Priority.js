@@ -4,6 +4,7 @@ import { useHistory } from "react-router"
 import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import * as BsIcons from "react-icons/bs"
 import * as AiIcons from "react-icons/ai"
+import "./Priority.css"
 
 
 export const Priority = ({ priorityObject }) => {
@@ -40,13 +41,15 @@ export const Priority = ({ priorityObject }) => {
             ? <>
                 <Card>
                     <Card.Body>
-                        <Card.Subtitle><div>{humanMonthDate}</div></Card.Subtitle>
+                        <Card.Subtitle className="text-muted card-sub"><div>{humanMonthDate}</div></Card.Subtitle>
                         <Card.Text><div>{priorityObject.content}</div></Card.Text>
-                        <Card.Link onClick={() => {history.push(`/priority/${priorityObject.id}/edit`)}}>
-                            <AiIcons.AiFillEdit /></Card.Link>
-                        <Button onClick={() => {
-                            handleSuccessButton(priorityObject.id)
-                        }}>Success</Button>
+                        <Card.Body className="post-btn-group">
+                            <Card.Link onClick={() => {history.push(`/priority/${priorityObject.id}/edit`)}}>
+                                <AiIcons.AiFillEdit className="edit-icon" /></Card.Link>
+                            <Button className="button" onClick={() => {
+                                handleSuccessButton(priorityObject.id)
+                            }}>Success</Button>
+                        </Card.Body>
                     </Card.Body>
                 </Card>
               </>

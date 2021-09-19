@@ -14,7 +14,7 @@ body, button, input, select, textarea {
 
 body {
 	/* background-image: url(game.jpg); */
-  background-color: #e4e4e4;
+  	background-color: #ededed;
 	background-position: center;
 	background-size: cover;
 	background-attachment: fixed;
@@ -25,6 +25,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto', sans-serif;
   /* letter-spacing: 2px; */
 	text-align: center;
+	margin: 4rem 0;
 }
 
 code {
@@ -35,7 +36,7 @@ code {
 .fakeLink {
     color: -webkit-link;
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
     background: none;
 	padding: 0 32px;
 	margin-top: 10rem;
@@ -55,7 +56,7 @@ code {
 }
 
 /* General button style */
-.btn {
+/* .btn {
 	border: none;
 	font-size: inherit;
 	color: inherit;
@@ -71,7 +72,7 @@ code {
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
-}
+} */
 
 .btn:after {
 	content: '';
@@ -93,114 +94,20 @@ code {
 	-webkit-font-smoothing: antialiased;
 }
 
-
-/* Icon separator 
-.btn-sep:before {
-	background: rgba(0,0,0,0.15);
-} */
-
-/* Button 1 */
-/*	.btn-1 {
-		background: #3498db;
-		color: #fff;
-	}
-
-	.btn-1:hover {
-		background: #2980b9;
-	}
-
-	.btn-1:active {
-		background: #2980b9;
-		top: 2px;
-	}
-
-	.btn-1:before {
-		position: absolute;
-		height: 100%;
-		left: 0;
-		top: 0;
-		line-height: 3;
-		font-size: 140%;
-		width: 60px;
-	}
-
-	/* Button 2 */
-/*	.btn-2 {
-		background: #2ecc71;
-		color: #fff;
-	}
-
-	.btn-2:hover {
-		background: #27ae60;
-	}
-
-	.btn-2:active {
-		background: #27ae60;
-		top: 2px;
-	}
-
-	.btn-2:before {
-		position: absolute;
-		height: 100%;
-		left: 0;
-		top: 0;
-		line-height: 3;
-		font-size: 140%;
-		width: 60px;
-	}
-
-	/* Button 3 */
-/*	.btn-3 {
-		background: #e74c3c;
-		color: #fff;
-	}
-
-	.btn-3:hover {
-		background: #c0392b;
-	}
-
-	.btn-3:active {
-		background: #c0392b;
-		top: 2px;
-	}
-
-	.btn-3:before {
-		position: absolute;
-		height: 100%;
-		left: 0;
-		top: 0;
-		line-height: 3;
-		font-size: 140%;
-		width: 60px;
-	}
-
-	/* Button 3 */
-/*	.btn-4 {
-		background: #34495e;
-		color: #fff;
-	}
-
-	.btn-4:hover {
-		background: #0e1318;
-	}
-
-	.btn-4:active {
-		background: #2c3e50;
-		top: 2px;
-	}
-
-	.btn-4:before {
-		position: absolute;
-		height: 100%;
-		left: 0;
-		top: 0;
-		line-height: 3;
-		font-size: 140%;
-		width: 60px;
-	} */
-
 /* Icons */
 
 .icon-send:before {
 	content: "🔓";
 }
+
+/* Card elements */
+.card {
+	border-radius: .5rem;
+	margin: 1rem 0;
+	box-shadow: 0px 0px 6px rgb(227, 227, 227);
+}
+
+/* .button {
+	background-color: orange;
+	border: orange;
+} */
