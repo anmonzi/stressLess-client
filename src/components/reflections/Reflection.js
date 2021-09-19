@@ -26,7 +26,7 @@ export const Reflection = ({ reflectionObj }) => {
                 ? <>
                     <Card>
                         <Card.Body>
-                            <Card.Subtitle><div>{humanMonthDate} at {humanTime}</div></Card.Subtitle>
+                            <Card.Subtitle className="text-muted"><div>{humanMonthDate} at {humanTime}</div></Card.Subtitle>
                             <Card.Text><div>{reflectionObj.content}</div></Card.Text>
                             <Card.Link onClick={() => {
                                 deleteReflection(reflectionObj.id)

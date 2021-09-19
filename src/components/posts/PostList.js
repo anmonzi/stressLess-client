@@ -3,7 +3,7 @@ import { PostContext } from "./PostProvider"
 import { Post } from "./Post"
 import { useHistory } from 'react-router'
 import { Container, Row, Col, Button } from "react-bootstrap"
-
+import "./Post.css"
 
 export const PostList = () => {
     const { posts, getPosts } = useContext(PostContext)
@@ -20,7 +20,7 @@ export const PostList = () => {
 
     return (
         <>
-            <Container>
+            <Container className="post-container">
                 <Row>
                     <Col> 
                         {

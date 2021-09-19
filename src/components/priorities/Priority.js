@@ -41,10 +41,10 @@ export const Priority = ({ priorityObject }) => {
             ? <>
                 <Card>
                     <Card.Body>
-                        <Card.Subtitle><div>{humanMonthDate}</div></Card.Subtitle>
+                        <Card.Subtitle className="text-muted"><div>{humanMonthDate}</div></Card.Subtitle>
                         <Card.Text><div>{priorityObject.content}</div></Card.Text>
                         <Card.Link onClick={() => {history.push(`/priority/${priorityObject.id}/edit`)}}>
-                            <AiIcons.AiFillEdit /></Card.Link>
+                            <AiIcons.AiFillEdit className="edit-icon" /></Card.Link>
                         <Button onClick={() => {
                             handleSuccessButton(priorityObject.id)
                         }}>Success</Button>

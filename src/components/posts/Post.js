@@ -8,6 +8,7 @@ import { DateTime } from "luxon"
 import * as BsIcons from "react-icons/bs"
 import * as AiIcons from "react-icons/ai"
 import Swal from "sweetalert2"
+import "./Post.css"
 
 
 export const Post = ({ postObject }) => {
@@ -57,20 +58,22 @@ export const Post = ({ postObject }) => {
             <Card>
                 <Card.Body>
                     <Card.Subtitle>{postObject.app_user?.full_name}</Card.Subtitle>
-                    <Card.Subtitle><div>{humanMonthDate} at {humanTime}</div></Card.Subtitle>
-                    <Card.Title>{postObject.title}</Card.Title>
+                    <Card.Subtitle className="text-muted"><div>{humanMonthDate} at {humanTime}</div></Card.Subtitle>
+                    <Card.Title className="card-title">{postObject.title}</Card.Title>
                     <Card.Text><div>{postObject.content}</div></Card.Text>
                     <Card.Img src={postObject.image_url} />
                     {
                         (postObject.owner)
                         ? <>
-                            <Card.Link onClick={() => {history.push(`/post/${postObject.id}/edit`)}}>
-                                <AiIcons.AiFillEdit /></Card.Link>
-                            <Card.Link onClick={() => {
-                                handleDeletePost(postObject.id)
-                            }}><BsIcons.BsTrashFill/></Card.Link>
+                            <Card.Body className="post-btn-group">
+                                <Card.Link onClick={() => {history.push(`/post/${postObject.id}/edit`)}}>
+                                    <AiIcons.AiFillEdit className="edit-icon" /></Card.Link>
+                                <Card.Link onClick={() => {
+                                    handleDeletePost(postObject.id)
+                                }}><BsIcons.BsTrashFill className="edit-icon"/></Card.Link>
+                            </Card.Body>
                           </>
-                        : <></>
+                        : null
                     }
                     <Card.Link onClick={() => setShowComments(!showComments)}>
                         {
