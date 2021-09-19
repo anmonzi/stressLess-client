@@ -64,6 +64,7 @@ export const Post = ({ postObject }) => {
                     <Card.Img src={postObject.image_url} />
                     {
                         (postObject.owner)
+                        // if owner of post show edit and delete buttons
                         ? <>
                             <Card.Body className="post-btn-group">
                                 <Card.Link onClick={() => {history.push(`/post/${postObject.id}/edit`)}}>
@@ -78,12 +79,15 @@ export const Post = ({ postObject }) => {
                     <Card.Link onClick={() => setShowComments(!showComments)}>
                         {
                             (postObject.comment_count > 0)
-                            ? <><div>{postObject.comment_count} Comments</div></>
+                            // if there are comments, show comment count under post
+                            ? <><Card.Link className="comment-count">
+                                {postObject.comment_count} Comments</Card.Link></>
                             : null
                         }
                     </Card.Link>
                     {
                         (showComments)
+                        // if user clicks above comment count link, showComment state becomes TRUE
                         ? <><CommentList postId={postObject.id}/></>
                         : null
                     }

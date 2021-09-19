@@ -71,11 +71,13 @@ export const CommentForm = ({ inputCollapse, buttonHide, post, commentShow }) =>
                                 <Form.Control as="textarea" rows={1}
                                 name="content" value={currentComment.content}
                                 onChange={handleUserInput} required/>
-                                <Button onClick={handleSaveComment}>Submit</Button>
-                                <Button onClick={() => {
-                                    buttonHide(true)
-                                    inputCollapse(!inputCollapse)
-                                }}>Cancel</Button>
+                                <Form.Group className="post-btn-group">
+                                    <Button className="post-form-btn" onClick={handleSaveComment}>Submit</Button>
+                                    <Button className="post-form-btn" onClick={() => {
+                                        buttonHide(true)
+                                        inputCollapse(!inputCollapse)
+                                    }}>Cancel</Button>
+                                </Form.Group>
                             </Form.Group>
                         </Form>
                     </Col>

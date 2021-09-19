@@ -102,7 +102,7 @@ export const Comment = ({ commentObj, post }) => {
                 ? <Card>
                     <Card.Body>
                         <Card.Subtitle>{commentObj.app_user?.full_name}</Card.Subtitle>
-                        <Card.Subtitle>{humanMonthDate} at {humanTime}</Card.Subtitle>
+                        <Card.Subtitle className="text-muted card-sub">{humanMonthDate} at {humanTime}</Card.Subtitle>
                         {/* ternary to show comment OR if EDIT is TRUE, show comment input form to edit comment */}
                         {
                             (edit)
@@ -115,9 +115,11 @@ export const Comment = ({ commentObj, post }) => {
                                                     <Form.Control as="textarea" rows={4}
                                                     name="content" value={currentComment.content}
                                                     onChange={handleUserInput} required/>
-                                                    <Button onClick={handleEditComment}>Save</Button>
-                                                    <Button onClick={() => 
-                                                        setEdit(!edit)}>Cancel</Button>
+                                                    <Form.Group className="post-btn-group">
+                                                        <Button className="post-form-btn" onClick={handleEditComment}>Save</Button>
+                                                        <Button className="post-form-btn" onClick={() => 
+                                                            setEdit(!edit)}>Cancel</Button>
+                                                    </Form.Group>
                                                 </Form.Group>
                                             </Form>
                                         </Col>
@@ -133,12 +135,14 @@ export const Comment = ({ commentObj, post }) => {
                         {
                             (commentObj.owner && edit === false)
                             ? <>
-                                <Button onClick={() => {
-                                    handleDeleteComment(commentObj.id)
-                                }}><BsIcons.BsTrashFill/></Button>
-                                <Button onClick={() => 
-                                    setEdit(!edit)
-                                }><AiIcons.AiFillEdit/></Button>
+                                <Card.Body className="post-btn-group">
+                                    <Card.Link className="edit-icon" onClick={() => 
+                                        setEdit(!edit)
+                                    }><AiIcons.AiFillEdit/></Card.Link>
+                                    <Card.Link className="edit-icon" onClick={() => {
+                                        handleDeleteComment(commentObj.id)
+                                    }}><BsIcons.BsTrashFill/></Card.Link>
+                                </Card.Body>
                               </>
                             : null
                         } 
