@@ -72,6 +72,13 @@ export const Post = ({ postObject }) => {
                           </>
                         : <></>
                     }
+                    <Card.Subtitle>
+                        {
+                            (postObject.reaction_counter > 0)
+                            ? <><div>{postObject.reaction_counter} Reactions</div></>
+                            : null
+                        }
+                    </Card.Subtitle>
                     <Card.Link onClick={() => setShowComments(!showComments)}>
                         {
                             (postObject.comment_count > 0)
@@ -94,7 +101,8 @@ export const Post = ({ postObject }) => {
                           }}>Comment</Button>
                         : null
                     }
-
+                </Card.Body>
+                <Card.Body>
                     {
                         (showCommentInput)
                         ? <>
@@ -104,7 +112,6 @@ export const Post = ({ postObject }) => {
                           </>
                         : null
                     }
-                    
                 </Card.Body>
             </Card> 
         </>
