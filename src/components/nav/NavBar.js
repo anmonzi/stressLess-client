@@ -31,15 +31,31 @@ export const NavBar = () => {
           </Offcanvas.Header>
           <Offcanvas.Body className="navbar-body">
             <ul className="navbar">
-              <li className="navbar__item">
-                <Link className="nav-link" to="/dashboard"
-                  onClick={handleShow}><BsIcons.BsFillHouseDoorFill className="nav-icon" /> Dashboard</Link>
-              </li>
+              {/* Dashboard link ternary */}
+              
               {
                 (user.is_staff)
                 ? <>
                     <li className="navbar__item">
-                      <Link className="nav-link" to="/users"
+                      <Link className="nav-link" to="/admin/dashboard"
+                        onClick={handleShow}><BsIcons.BsFillHouseDoorFill className="nav-icon" /> Dashboard</Link>
+                    </li>
+                  </>
+                : <>
+                    <li className="navbar__item">
+                      <Link className="nav-link" to="/dashboard"
+                        onClick={handleShow}><BsIcons.BsFillHouseDoorFill className="nav-icon" /> Dashboard</Link>
+                    </li>
+                  </>
+              }
+
+              {/* Admin app users or user profile ternary */}
+
+              {
+                (user.is_staff)
+                ? <>
+                    <li className="navbar__item">
+                      <Link className="nav-link" to="/admin/users"
                         onClick={handleShow}><BsIcons.BsFillPersonFill className="nav-icon" /> App Users </Link>
                     </li>
                   </>
@@ -50,10 +66,16 @@ export const NavBar = () => {
                     </li>
                   </>
               }
+
+              {/* Everyone needs access to the social feed with same view for the time being */}
+
               <li className="navbar__item">
                 <Link className="nav-link" to="/community"
                   onClick={handleShow}><BsIcons.BsChatDotsFill className="nav-icon" /> Community</Link>
               </li>
+
+              {/* Admin doesn't have achievements page but users do */}
+
               {
                 (user.is_staff)
                 ? null
@@ -64,11 +86,14 @@ export const NavBar = () => {
                     </li>
                   </>
               }
+
+              {/* Admin resoure upload or user resource tab */}
+
               {
                 (user.is_staff)
                 ? <>
                     <li className="navbar__item">
-                      <Link className="nav-link" to="/upload"
+                      <Link className="nav-link" to="/admin/resource/upload"
                         onClick={handleShow}><BsIcons.BsBook className="nav-icon" /> Resource Upload</Link>
                     </li>
                   </>
@@ -80,13 +105,14 @@ export const NavBar = () => {
                   </>
               }
               
-              
+              {/* Logout  */}
               {
                   (localStorage.getItem("stressLess_user_id") !== null) ?
                       <li className="navbar__item">
                           <button className="nav-link fakeLink"
                               onClick={() => {
                                   localStorage.removeItem("stressLess_user_id")
+                                  localStorage.removeItem("stressLess_staff")
                                   history.push({ pathname: "/" })
                               }}
                           >Logout <FiIcons.FiLogOut className="nav-logout" /></button>
