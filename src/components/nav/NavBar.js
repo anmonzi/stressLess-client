@@ -39,7 +39,7 @@ export const NavBar = () => {
                 (user.is_staff)
                 ? <>
                     <li className="navbar__item">
-                      <Link className="nav-link" to="/profile"
+                      <Link className="nav-link" to="/users"
                         onClick={handleShow}><BsIcons.BsFillPersonFill className="nav-icon" /> App Users </Link>
                     </li>
                   </>
@@ -68,7 +68,7 @@ export const NavBar = () => {
                 (user.is_staff)
                 ? <>
                     <li className="navbar__item">
-                      <Link className="nav-link" to="/resources"
+                      <Link className="nav-link" to="/upload"
                         onClick={handleShow}><BsIcons.BsBook className="nav-icon" /> Resource Upload</Link>
                     </li>
                   </>

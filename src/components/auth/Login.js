@@ -24,11 +24,13 @@ export const Login = props => {
         })
             .then(res => res.json())
             .then(res => {
-                if ("valid" in res && res.valid && "token" in res) {
+                if ("valid" in res && res.valid && "token" in res && "is_staff" in res && res.is_staff) {
+                    localStorage.setItem( "stressLess_user_id", res.token )
+                    props.history.push("/admin/dashboard")
+                } else if ("valid" in res && res.valid && "token" in res) {
                     localStorage.setItem( "stressLess_user_id", res.token )
                     props.history.push("/dashboard")
-                }
-                else {
+                } else {
                     invalidDialog.current.showModal()
                 }
             })
