@@ -40,6 +40,26 @@
     color: #fff;
 }
 
+.salmon:hover {
+    background-color: rgb(227, 197, 188);
+    color: #fff;
+}
+
+.steel:hover {
+    background-color: rgb(106, 139, 158);
+    color: #fff;
+}
+
+.purple:hover {
+    background-color: rgb(163, 167, 191);
+    color: #fff;
+}
+
+.sage:hover {
+    background-color: rgb(169, 190, 194);
+    color: #fff;
+}
+
 .offcanvas-start {
     width: 300px;
 }
@@ -54,7 +74,7 @@
 }
 
 .nav-logout:hover {
-    color: #fff;
+    color: #fff !important;
 }
 
 span {

@@ -18,3 +18,8 @@
 	background-color: rgb(177, 201, 199);
 	border: rgb(177, 201, 199);
 }
+
+.button:hover {
+    background-color: rgb(143, 166, 164);
+	border: rgb(177, 201, 199);
+}

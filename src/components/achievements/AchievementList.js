@@ -31,7 +31,7 @@ export const AchievementList = () => {
                                 return <Achievement achievement={achievement} key={achievement.id} />
                             })
                         }
-                        <Button onClick={() => history.goBack()}>Back</Button>
+                        <Button className="button" onClick={() => history.goBack()}>Back</Button>
                     </Col>
                 </Row>
             </Container>

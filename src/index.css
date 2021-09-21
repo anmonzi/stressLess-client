@@ -48,8 +48,8 @@ code {
 }
 
 .fakeLink:hover {
-    background-color: rgb(143, 166, 164);
-	color: #fff;
+    background-color: rgb(75, 78, 89);
+	color: #fff !important;
 }
 
 .nav-item {
