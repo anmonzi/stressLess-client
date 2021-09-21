@@ -27,3 +27,8 @@ a {
 .comment-count:hover {
     cursor: pointer;
 }
+
+.admin-button {
+    display: flex;
+    justify-content: end;
+}
