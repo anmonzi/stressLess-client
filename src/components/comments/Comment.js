@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from "react"
 import { CommentContext } from "./CommentProvider"
 import { PostContext } from "../posts/PostProvider"
-import { useHistory } from 'react-router'
+import { NavBarContext } from "../nav/NavBarProvider"
 import { Container, Row, Col, Button, Card, Form } from "react-bootstrap"
 import * as BsIcons from "react-icons/bs"
 import * as AiIcons from "react-icons/ai"
@@ -11,9 +11,14 @@ import Swal from "sweetalert2"
 export const Comment = ({ commentObj, post }) => {
     // returns individual comment to comment list
     const { editComment, getCommentById, deleteComment } = useContext(CommentContext)
+    const { user, checkIfStaff } = useContext(NavBarContext)
     const { getPosts } = useContext(PostContext)
     const currentUser = localStorage.getItem("stressLess_user_id")
     const postId = post
+
+    useEffect(() => {
+        checkIfStaff()
+    }, [])
 
     // making date readable to humans
     // const monthDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
@@ -99,12 +104,21 @@ export const Comment = ({ commentObj, post }) => {
         <>
             {
                 (commentObj.post_id === post)
-                ? <Card>
+                ? <Card md={4}>
                     <Card.Body>
+                        {/* Admin remove button for app user posts */}
+                        {
+                            (user.is_staff && ! commentObj.owner)
+                            ? <div className="admin-button"><Button variant="danger" onClick={() => {
+                                handleDeleteComment(commentObj.id)
+                                }}>Remove</Button></div>
+                            : null
+                        }
                         <Card.Subtitle>{commentObj.app_user?.full_name}</Card.Subtitle>
                         <Card.Subtitle className="text-muted card-sub">{humanMonthDate} at {humanTime}</Card.Subtitle>
                         {/* ternary to show comment OR if EDIT is TRUE, show comment input form to edit comment */}
                         {
+                            // if edit is true then render comment input form and state
                             (edit)
                             ? <>
                                 <Container>
