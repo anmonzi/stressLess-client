@@ -29,6 +29,7 @@ export const CommunityFeed = () => {
                 </Row>
                 <Row>
                     <Col>
+                    {/*  */}
                         <PostList/>
                     </Col>
                 </Row>
