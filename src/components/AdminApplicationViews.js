@@ -3,8 +3,9 @@ import { Route } from "react-router-dom"
 import { Dashboard } from "./dashboard/Dashboard"
 import { DashboardProvider } from "./dashboard/DashboardProvider"
 import { AdminDashboard } from "./admin/AdminDashboard"
+import { AppUserProvider } from "./users/AppUserProvider"
+import { AppUserList } from "./users/AppUserList"
 import { PriorityForm } from "./priorities/PriorityForm"
-import { AchievementProvider } from "./achievements/AchievementsProvider"
 import { AchievementList } from "./achievements/AchievementList"
 import { CommunityFeed } from "./community/CommunityFeed"
 import { PostProvider } from "./posts/PostProvider"
@@ -21,12 +22,12 @@ export const ApplicationViewsTwo = () => {
                     </Route>
         </DashboardProvider>
 
-        {/* Render completed Priorities as Achievements for user history */}
-        <AchievementProvider>
-            <Route exact path="/achievements">
-                <AchievementList />
+        {/* Render complete list of current application users */}
+       <AppUserProvider>
+            <Route exact path="/admin/users">
+                <AppUserList />
             </Route>
-        </AchievementProvider>
+        </AppUserProvider>
 
         {/* Render community feed here (posts & comments) */}
         <PostProvider>
