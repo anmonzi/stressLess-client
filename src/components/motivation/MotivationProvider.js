@@ -3,9 +3,9 @@ import React, { useState, createContext } from 'react'
 export const MotivationContext = createContext()
 
 export const MotivationProvider = (props) => {
-    const [motivations, setMotivations] = useState([])
+    const [motivation, setMotivation] = useState({})
 
-    const getMotivations = () => {
+    const getMotivation = () => {
         return fetch("http://localhost:8000/motivation", { 
             method: "GET",
             headers: {
@@ -14,13 +14,13 @@ export const MotivationProvider = (props) => {
           }
         )
         .then((res) => res.json())
-        .then(setMotivations)
+        .then(setMotivation)
       }
 
       return (
           <MotivationContext.Provider value={
               {
-                  motivations, getMotivations
+                  motivation, getMotivation
               }
           }>
               {props.children}

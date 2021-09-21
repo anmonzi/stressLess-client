@@ -15,6 +15,7 @@ import { ResourceProvider } from "./resources/ResourceProvider"
 import { ResourceList } from "./resources/ResourceList"
 import { ProfileProvider } from "./profile/ProfileProvider"
 import { Profile } from "./profile/Profile"
+import { MotivationProvider } from "./motivation/MotivationProvider"
 
 
 export const ApplicationViews = () => {
@@ -23,17 +24,19 @@ export const ApplicationViews = () => {
         <DashboardProvider>
             <PriorityProvider>
                 <ReflectionProvider>
-                    <Route exact path="/dashboard">
-                        <Dashboard />
-                    </Route>
+                    <MotivationProvider>
+                        <Route exact path="/dashboard">
+                            <Dashboard />
+                        </Route>
 
-                    <Route exact path="/priority/new">
-                        <PriorityForm />
-                    </Route>
+                        <Route exact path="/priority/new">
+                            <PriorityForm />
+                        </Route>
 
-                    <Route exact path="/priority/:priorityId(\d+)/edit">
-                        <PriorityForm />
-                    </Route>
+                        <Route exact path="/priority/:priorityId(\d+)/edit">
+                            <PriorityForm />
+                        </Route>
+                    </MotivationProvider>
                 </ReflectionProvider>
             </PriorityProvider>
         </DashboardProvider>
