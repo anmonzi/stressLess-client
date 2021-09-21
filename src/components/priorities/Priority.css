@@ -6,8 +6,15 @@
 .edit-icon {
     font-size: 20px;
     margin-right: 1rem;
+    color: rgb(177, 201, 199);
 }
 
 .edit-icon:hover {
     cursor: pointer;
+    color: rgb(143, 166, 164);
+}
+
+.button {
+	background-color: rgb(177, 201, 199);
+	border: rgb(177, 201, 199);
 }

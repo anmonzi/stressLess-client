@@ -39,7 +39,7 @@ export const Priority = ({ priorityObject }) => {
         {
             (priorityObject.owner && priorityObject.completed === false)
             ? <>
-                <Card>
+                <Card className="priority-card">
                     <Card.Body>
                         <Card.Subtitle className="text-muted card-sub"><div>{humanMonthDate}</div></Card.Subtitle>
                         <Card.Text><div>{priorityObject.content}</div></Card.Text>
