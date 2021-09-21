@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from "react"
 import { DashboardContext } from "./DashboardProvider"
 import { PriorityList } from "../priorities/PriorityList"
+import { Motivation } from "../motivation/Motivation"
 import { ReflectionList } from "../reflections/ReflectionList.js"
 import { Container, Row, Col } from "react-bootstrap"
 import "./Dashboard.css"
@@ -20,6 +21,7 @@ export const Dashboard = () => {
                     <Col xs={10} md={8}
                     className="dashboard-welcome">
                         <h2>Welcome to StressLess, {dashboard.app_user?.full_name}</h2>
+                        <div className="motivation"><Motivation/></div>
                     </Col>
                 </Row>
                 <Row>
