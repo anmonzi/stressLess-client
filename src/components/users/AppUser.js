@@ -27,16 +27,20 @@ export const AppUser = ({ userObj }) => {
                         <div>Date Joined: {humanMonthDate} at {humanTime}</div>
                     </Card.Subtitle>
                     <Card.Text><div>Username: {userObj.user?.username}</div></Card.Text>
+                    <Card.Text>
+                        <div>Is Staff?</div>
+                        {
+                            (userObj.user?.is_staff)
+                            ? <>True</>
+                            : <>False</>
+                        }
+                    </Card.Text>
                     {
                         (userObj.user?.is_active)
-                        ? <>Is Active?<div>True</div></>
-                        : <>Is Active?<div>False</div></>
+                        ? <><Button variant="success">Active</Button></>
+                        : <><Button variant="secondary">Inactive</Button></>
                     }
-                    {
-                        (userObj.user?.is_staff)
-                        ? <>Is Staff? <div>True</div></>
-                        : <>Is Staff? <div>False</div></>
-                    }
+                    
                 </Card.Body>
             </Card>   
         </>
