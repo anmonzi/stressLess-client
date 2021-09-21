@@ -37,7 +37,7 @@ export const AppUser = ({ userObj }) => {
                     </Card.Text>
                     {
                         (userObj.user?.is_active)
-                        ? <><Button variant="success">Active</Button></>
+                        ? <><Button className="button">Active</Button></>
                         : <><Button variant="secondary">Inactive</Button></>
                     }
                     

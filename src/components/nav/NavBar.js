@@ -61,18 +61,29 @@ export const NavBar = () => {
                   </>
                 : <>
                     <li className="navbar__item">
-                      <Link className="nav-link" to="/profile"
+                      <Link className="nav-link purple" to="/profile"
                         onClick={handleShow}><BsIcons.BsFillPersonFill className="nav-icon" /> User Profile</Link>
                     </li>
                   </>
               }
 
-              {/* Everyone needs access to the social feed with same view for the time being */}
+              {/* Admin will require more permissions than user */}
 
-              <li className="navbar__item">
-                <Link className="nav-link" to="/community"
-                  onClick={handleShow}><BsIcons.BsChatDotsFill className="nav-icon" /> Community</Link>
-              </li>
+              {
+                (user.is_staff)
+                ? <>
+                    <li className="navbar__item">
+                      <Link className="nav-link" to="/community"
+                        onClick={handleShow}><BsIcons.BsChatDotsFill className="nav-icon" /> Social Feed</Link>
+                    </li>
+                  </>
+                : <>
+                    <li className="navbar__item">
+                      <Link className="nav-link steel" to="/community"
+                        onClick={handleShow}><BsIcons.BsChatDotsFill className="nav-icon" /> Community</Link>
+                    </li>
+                  </>
+              }
 
               {/* Admin doesn't have achievements page but users do */}
 
@@ -81,7 +92,7 @@ export const NavBar = () => {
                 ? null
                 : <>
                     <li className="navbar__item">
-                      <Link className="nav-link" to="/achievements"
+                      <Link className="nav-link salmon" to="/achievements"
                         onClick={handleShow}><BsIcons.BsAwardFill className="nav-icon" /> Achievements</Link>
                     </li>
                   </>
@@ -99,7 +110,7 @@ export const NavBar = () => {
                   </>
                 : <>
                     <li className="navbar__item">
-                      <Link className="nav-link" to="/resources"
+                      <Link className="nav-link sage" to="/resources"
                         onClick={handleShow}><BsIcons.BsBook className="nav-icon" /> Resources</Link>
                     </li>
                   </>
@@ -109,7 +120,7 @@ export const NavBar = () => {
               {
                   (localStorage.getItem("stressLess_user_id") !== null) ?
                       <li className="navbar__item">
-                          <button className="nav-link fakeLink"
+                          <button className="nav-link fakeLink nav-logout"
                               onClick={() => {
                                   localStorage.removeItem("stressLess_user_id")
                                   localStorage.removeItem("stressLess_staff")

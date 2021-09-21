@@ -1,6 +1,8 @@
 .menu-bars {
     font-size: 1.5rem !important;
     margin: 1rem;
+    background-color: rgb(143, 166, 164);
+    border-color: rgb(143, 166, 164);
 }
 
 .navbar-header {
@@ -30,10 +32,31 @@
     align-items: center;
     padding: 0 20px;
     border-radius: 4px;
+    color: rgb(143, 166, 164);
 }
 
 .nav-link:hover {
-    background-color: #1a83ff;
+    background-color: rgb(143, 166, 164);
+    color: #fff;
+}
+
+.salmon:hover {
+    background-color: rgb(227, 197, 188);
+    color: #fff;
+}
+
+.steel:hover {
+    background-color: rgb(106, 139, 158);
+    color: #fff;
+}
+
+.purple:hover {
+    background-color: rgb(163, 167, 191);
+    color: #fff;
+}
+
+.sage:hover {
+    background-color: rgb(169, 190, 194);
     color: #fff;
 }
 
@@ -47,6 +70,11 @@
 
 .nav-logout {
     margin-left: 1rem;
+    color: rgb(143, 166, 164)!important;
+}
+
+.nav-logout:hover {
+    color: #fff !important;
 }
 
 span {
