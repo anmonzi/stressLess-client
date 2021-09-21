@@ -13,6 +13,8 @@ import { PostForm } from "./posts/PostForm"
 import { CommentProvider } from "./comments/CommentProvider"
 import { ResourceProvider } from "./resources/ResourceProvider"
 import { ResourceList } from "./resources/ResourceList"
+import { ProfileProvider } from "./profile/ProfileProvider"
+import { Profile } from "./profile/Profile"
 
 
 export const ApplicationViews = () => {
@@ -66,5 +68,12 @@ export const ApplicationViews = () => {
                 <ResourceList />
             </Route>
         </ResourceProvider>
+
+        {/* Render user profile here */}
+        <ProfileProvider>
+            <Route exact path="/profile">
+                <Profile/>
+            </Route>
+        </ProfileProvider>
     </>
 }
