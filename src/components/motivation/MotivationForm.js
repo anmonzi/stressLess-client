@@ -31,7 +31,7 @@ export const MotivationForm = () => {
             appUser: currentUser,
             title: currentMotivation.title,
             content: currentMotivation.content,
-            createdOn: now.toISO()
+            createdOn: now.toISODate()
         }
 
         if (currentMotivation.content === "" || currentMotivation.title === "") {
@@ -64,7 +64,8 @@ export const MotivationForm = () => {
                                 name="content" value={currentMotivation.content}
                                 onChange={handleUserInput} placeholder="Your wise words here" required/>
                                 <Form.Group className="post-form-btn-group">
-                                    <Button type="submit" className="post-form-btn button" onClick={handleSaveMotivation}>Submit</Button>
+                                    <Button type="submit" className="post-form-btn button"
+                                    onClick={handleSaveMotivation}>Submit</Button>
                                 </Form.Group>
                             </Form.Group>
                         </Form>

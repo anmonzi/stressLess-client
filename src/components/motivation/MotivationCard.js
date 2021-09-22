@@ -8,6 +8,7 @@ import * as BsIcons from "react-icons/bs"
 
 export const MotivationCard = ({ motivationObj }) => {
     // returns individual reflections to reflection list
+    const { deleteMotivation, editMotivation } = useContext(MotivationContext)
     
 
     // making date readable to humans
@@ -28,6 +29,11 @@ export const MotivationCard = ({ motivationObj }) => {
                 </Card.Subtitle>
                 <Card.Text><div>{motivationObj.title}</div></Card.Text>
                 <Card.Text><div>{motivationObj.content}</div></Card.Text>
+                <Card.Body className="post-btn-group">
+                    <Card.Link className="edit-icon" onClick={() => {
+                        deleteMotivation(motivationObj.id)
+                    }}><BsIcons.BsTrashFill/></Card.Link>
+                </Card.Body>
             </Card.Body>
         </Card>
         </>

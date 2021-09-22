@@ -41,15 +41,40 @@ export const MotivationProvider = (props) => {
         })
         .then(getAllMotivations)
         .then()
-    }
+      }
+
+      const editMotivation = motivation => {
+        return fetch(`http://localhost:8000/motivations/${motivation.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${localStorage.getItem("stressLess_user_id")}`
+            },
+            body: JSON.stringify(motivation)
+        })
+        .then(getAllMotivations)
+        .then()
+      }
+
+      const deleteMotivation = motivationId => {
+        return fetch(`http://localhost:8000/motivations/${motivationId}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Token ${localStorage.getItem("stressLess_user_id")}`
+            }
+        })
+        .then(getAllMotivations)
+      }
       
+
 
       return (
           <MotivationContext.Provider value={
               {
                   motivation, getNewestMotivation,
                   allMotivations, getAllMotivations,
-                  createMotivation
+                  createMotivation, deleteMotivation,
+                  editMotivation
               }
           }>
               {props.children}
