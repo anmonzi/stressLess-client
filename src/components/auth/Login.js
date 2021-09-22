@@ -7,6 +7,7 @@ export const Login = props => {
     const email = React.createRef()
     const password = React.createRef()
     const invalidDialog = React.createRef()
+    const inactiveDialog = React.createRef()
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -28,6 +29,8 @@ export const Login = props => {
                     localStorage.setItem( "stressLess_user_id", res.token )
                     localStorage.setItem( "stressLess_staff", res.is_staff )
                     props.history.push("/admin/dashboard")
+                } else if ("valid" in res && res.valid === false) {
+                    inactiveDialog.current.showModal()
                 } else if ("valid" in res && res.valid && "token" in res) {
                     localStorage.setItem( "stressLess_user_id", res.token )
                     props.history.push("/dashboard")
@@ -39,10 +42,17 @@ export const Login = props => {
 
     return (
         <main className="container--login">
+            
             <dialog className="dialog dialog--auth" ref={invalidDialog}>
                 <div>Email or password was not valid.</div>
                 <button className="button--close" onClick={e => invalidDialog.current.close()}>Close</button>
             </dialog>
+        
+            <dialog className="dialog dialog--auth" ref={inactiveDialog}>
+                <div>Your account has been suspended.</div>
+                <button className="button--close" onClick={e => inactiveDialog.current.close()}>Close</button>
+            </dialog>
+            
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
                     <h1>Welcome to StressLess</h1>
