@@ -1,25 +1,25 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { Dashboard } from "./dashboard/Dashboard"
 import { DashboardProvider } from "./dashboard/DashboardProvider"
 import { AdminDashboard } from "./admin/AdminDashboard"
 import { AppUserProvider } from "./users/AppUserProvider"
 import { AppUserList } from "./users/AppUserList"
-import { PriorityForm } from "./priorities/PriorityForm"
-import { AchievementList } from "./achievements/AchievementList"
 import { CommunityFeed } from "./community/CommunityFeed"
 import { PostProvider } from "./posts/PostProvider"
 import { PostForm } from "./posts/PostForm"
 import { CommentProvider } from "./comments/CommentProvider"
+import { MotivationProvider } from "./motivation/MotivationProvider"
 
 
 export const ApplicationViewsTwo = () => {
     return <>
         {/* Render user dashboard upon login */}
         <DashboardProvider>
-                    <Route exact path="/admin/dashboard">
-                        <AdminDashboard />
-                    </Route>
+            <MotivationProvider>
+                <Route exact path="/admin/dashboard">
+                    <AdminDashboard />
+                </Route>
+            </MotivationProvider>
         </DashboardProvider>
 
         {/* Render complete list of current application users */}

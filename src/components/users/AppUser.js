@@ -20,29 +20,55 @@ export const AppUser = ({ userObj }) => {
     
     return (
         <>
-            <Card>
-                <Card.Body>
-                    <Card.Text><div>{userObj.full_name}</div></Card.Text>
-                    <Card.Subtitle className="text-muted card-sub">
-                        <div>Date Joined: {humanMonthDate} at {humanTime}</div>
-                    </Card.Subtitle>
-                    <Card.Text><div>Username: {userObj.user?.username}</div></Card.Text>
-                    <Card.Text>
-                        <div>Is Staff?</div>
+            {
+                (userObj.user?.is_active)
+                ?   <Card>
+                        <Card.Body>
+                            <Card.Text><div>{userObj.full_name}</div></Card.Text>
+                            <Card.Subtitle className="text-muted card-sub">
+                                <div>Date Joined: {humanMonthDate} at {humanTime}</div>
+                            </Card.Subtitle>
+                            <Card.Text><div>Username: {userObj.user?.username}</div></Card.Text>
+                            <Card.Text>
+                                <div>Is Staff?</div>
+                                {
+                                    (userObj.user?.is_staff)
+                                    ? <>True</>
+                                    : <>False</>
+                                }
+                            </Card.Text>
+                            {
+                                (userObj.user?.is_active)
+                                ? <><Button className="button">Active</Button></>
+                                : <><Button variant="secondary">Inactive</Button></>
+                            }
+                            
+                        </Card.Body>
+                    </Card>
+                : <Card bg="light" border="dark">
+                    <Card.Body>
+                        <Card.Text><div>{userObj.full_name}</div></Card.Text>
+                        <Card.Subtitle className="text-muted card-sub">
+                            <div>Date Joined: {humanMonthDate} at {humanTime}</div>
+                        </Card.Subtitle>
+                        <Card.Text><div>Username: {userObj.user?.username}</div></Card.Text>
+                        <Card.Text>
+                            <div>Is Staff?</div>
+                            {
+                                (userObj.user?.is_staff)
+                                ? <>True</>
+                                : <>False</>
+                            }
+                        </Card.Text>
                         {
-                            (userObj.user?.is_staff)
-                            ? <>True</>
-                            : <>False</>
+                            (userObj.user?.is_active)
+                            ? <><Button className="button">Active</Button></>
+                            : <><Button variant="secondary">Inactive</Button></>
                         }
-                    </Card.Text>
-                    {
-                        (userObj.user?.is_active)
-                        ? <><Button className="button">Active</Button></>
-                        : <><Button variant="secondary">Inactive</Button></>
-                    }
-                    
-                </Card.Body>
-            </Card>   
+                        
+                    </Card.Body>
+                </Card>
+            }
         </>
     )
 }
