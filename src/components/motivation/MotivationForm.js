@@ -34,7 +34,7 @@ export const MotivationForm = () => {
             createdOn: now.toISODate()
         }
 
-        if (currentMotivation.content === "" || currentMotivation.title === "") {
+        if (currentMotivation.title === "") {
             return
         } else {
             // send POST request to API
@@ -59,10 +59,10 @@ export const MotivationForm = () => {
                             <Form.Group>
                                 <Form.Control as="input"
                                 name="title" value={currentMotivation.title}
-                                onChange={handleUserInput} placeholder="Title" required/>
+                                onChange={handleUserInput} placeholder="Enter question or motivation" required/>
                                 <Form.Control as="textarea" row={3}
                                 name="content" value={currentMotivation.content}
-                                onChange={handleUserInput} placeholder="Your wise words here" required/>
+                                onChange={handleUserInput} placeholder="Any additional notes?" required/>
                                 <Form.Group className="post-form-btn-group">
                                     <Button type="submit" className="post-form-btn button"
                                     onClick={handleSaveMotivation}>Submit</Button>

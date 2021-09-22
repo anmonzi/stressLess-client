@@ -30,6 +30,16 @@ export const MotivationProvider = (props) => {
         .then(setAllMotivations)
       }
 
+      const getMotivationById = motivationId => {
+        return fetch(`http://localhost:8000/motivations/${motivationId}`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem("stressLess_user_id")}`
+            }
+        })
+        .then(res => res.json())
+      }
+
+
       const createMotivation = motivationObj => {
         return fetch("http://localhost:8000/motivations", {
             method: "POST",
@@ -74,7 +84,7 @@ export const MotivationProvider = (props) => {
                   motivation, getNewestMotivation,
                   allMotivations, getAllMotivations,
                   createMotivation, deleteMotivation,
-                  editMotivation
+                  editMotivation, getMotivationById
               }
           }>
               {props.children}

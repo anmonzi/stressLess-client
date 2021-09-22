@@ -13,7 +13,7 @@ export const MotivationList = () => {
     }, [])
 
     const sortedMotivations = allMotivations.sort((a, b) => {
-        return b.created_on.localeCompare(a.created_on)
+        return b.id - a.id
     })
 
 
