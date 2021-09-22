@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from "react"
 import { DashboardContext } from "../dashboard/DashboardProvider"
 import { MotivationList } from "../motivation/MotivationList"
+import { MotivationForm } from "../motivation/MotivationForm"
 import { Container, Row, Col } from "react-bootstrap"
 import "../dashboard/Dashboard.css"
 
@@ -25,7 +26,7 @@ export const AdminDashboard = () => {
                 <Row>
                     <Col>
                         <h3>Create a New Motivation</h3>
-                        <div>Motivation Input Here</div>
+                        <MotivationForm/>
                     </Col>
                 </Row>
                 <Row>

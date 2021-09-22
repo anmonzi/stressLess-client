@@ -30,11 +30,26 @@ export const MotivationProvider = (props) => {
         .then(setAllMotivations)
       }
 
+      const createMotivation = motivationObj => {
+        return fetch("http://localhost:8000/motivations", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${localStorage.getItem("stressLess_user_id")}`
+            },
+            body: JSON.stringify(motivationObj)
+        })
+        .then(getAllMotivations)
+        .then()
+    }
+      
+
       return (
           <MotivationContext.Provider value={
               {
                   motivation, getNewestMotivation,
-                  allMotivations, getAllMotivations
+                  allMotivations, getAllMotivations,
+                  createMotivation
               }
           }>
               {props.children}

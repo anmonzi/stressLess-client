@@ -23,7 +23,9 @@ export const MotivationCard = ({ motivationObj }) => {
         <>
         <Card>
             <Card.Body>
-                <Card.Subtitle className="text-muted card-sub"><div>{humanMonthDate} at {humanTime}</div></Card.Subtitle>
+                <Card.Subtitle className="text-muted card-sub">
+                    <div>Created {humanMonthDate} at {humanTime}</div>
+                </Card.Subtitle>
                 <Card.Text><div>{motivationObj.title}</div></Card.Text>
                 <Card.Text><div>{motivationObj.content}</div></Card.Text>
             </Card.Body>
