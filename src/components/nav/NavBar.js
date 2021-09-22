@@ -1,5 +1,6 @@
-import React, { useState} from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { NavBarContext } from "./NavBarProvider"
 import "./NavBar.css"
 import { Button, Offcanvas } from "react-bootstrap"
 import { useHistory } from "react-router"
@@ -8,10 +9,15 @@ import * as FiIcons from "react-icons/fi"
 import * as BsIcons from "react-icons/bs"
 
 export const NavBar = () => {
+    const { user, checkIfStaff } = useContext(NavBarContext)
     const [show, setShow] = useState(false);
     const history = useHistory()
   
     const handleShow = () => setShow(!show);
+
+    useEffect(() => {
+      checkIfStaff()
+    }, [])
   
     return (
       <>
@@ -25,32 +31,99 @@ export const NavBar = () => {
           </Offcanvas.Header>
           <Offcanvas.Body className="navbar-body">
             <ul className="navbar">
-              <li className="navbar__item">
-                <Link className="nav-link" to="/dashboard"
-                  onClick={handleShow}><BsIcons.BsFillHouseDoorFill className="nav-icon" /> Dashboard</Link>
-              </li>
-              <li className="navbar__item">
-                <Link className="nav-link" to="/profile"
-                  onClick={handleShow}><BsIcons.BsFillPersonFill className="nav-icon" /> User Profile</Link>
-              </li>
-              <li className="navbar__item">
-                <Link className="nav-link" to="/community"
-                  onClick={handleShow}><BsIcons.BsChatDotsFill className="nav-icon" /> Community</Link>
-              </li>
-              <li className="navbar__item">
-                <Link className="nav-link" to="/achievements"
-                  onClick={handleShow}><BsIcons.BsAwardFill className="nav-icon" /> Achievements</Link>
-              </li>
-              <li className="navbar__item">
-                <Link className="nav-link" to="/resources"
-                  onClick={handleShow}><BsIcons.BsBook className="nav-icon" /> Resources</Link>
-              </li>
+              {/* Dashboard link ternary */}
+              
+              {
+                (user.is_staff)
+                ? <>
+                    <li className="navbar__item">
+                      <Link className="nav-link" to="/admin/dashboard"
+                        onClick={handleShow}><BsIcons.BsFillHouseDoorFill className="nav-icon" /> Dashboard</Link>
+                    </li>
+                  </>
+                : <>
+                    <li className="navbar__item">
+                      <Link className="nav-link" to="/dashboard"
+                        onClick={handleShow}><BsIcons.BsFillHouseDoorFill className="nav-icon" /> Dashboard</Link>
+                    </li>
+                  </>
+              }
+
+              {/* Admin app users or user profile ternary */}
+
+              {
+                (user.is_staff)
+                ? <>
+                    <li className="navbar__item">
+                      <Link className="nav-link" to="/admin/users"
+                        onClick={handleShow}><BsIcons.BsFillPersonFill className="nav-icon" /> App Users </Link>
+                    </li>
+                  </>
+                : <>
+                    <li className="navbar__item">
+                      <Link className="nav-link purple" to="/profile"
+                        onClick={handleShow}><BsIcons.BsFillPersonFill className="nav-icon" /> User Profile</Link>
+                    </li>
+                  </>
+              }
+
+              {/* Admin will require more permissions than user */}
+
+              {
+                (user.is_staff)
+                ? <>
+                    <li className="navbar__item">
+                      <Link className="nav-link" to="/community"
+                        onClick={handleShow}><BsIcons.BsChatDotsFill className="nav-icon" /> Social Feed</Link>
+                    </li>
+                  </>
+                : <>
+                    <li className="navbar__item">
+                      <Link className="nav-link steel" to="/community"
+                        onClick={handleShow}><BsIcons.BsChatDotsFill className="nav-icon" /> Community</Link>
+                    </li>
+                  </>
+              }
+
+              {/* Admin doesn't have achievements page but users do */}
+
+              {
+                (user.is_staff)
+                ? null
+                : <>
+                    <li className="navbar__item">
+                      <Link className="nav-link salmon" to="/achievements"
+                        onClick={handleShow}><BsIcons.BsAwardFill className="nav-icon" /> Achievements</Link>
+                    </li>
+                  </>
+              }
+
+              {/* Admin resoure upload or user resource tab */}
+
+              {
+                (user.is_staff)
+                ? <>
+                    <li className="navbar__item">
+                      <Link className="nav-link" to="/admin/resource/upload"
+                        onClick={handleShow}><BsIcons.BsBook className="nav-icon" /> Resource Upload</Link>
+                    </li>
+                  </>
+                : <>
+                    <li className="navbar__item">
+                      <Link className="nav-link sage" to="/resources"
+                        onClick={handleShow}><BsIcons.BsBook className="nav-icon" /> Resources</Link>
+                    </li>
+                  </>
+              }
+              
+              {/* Logout  */}
               {
                   (localStorage.getItem("stressLess_user_id") !== null) ?
                       <li className="navbar__item">
-                          <button className="nav-link fakeLink"
+                          <button className="nav-link fakeLink nav-logout"
                               onClick={() => {
                                   localStorage.removeItem("stressLess_user_id")
+                                  localStorage.removeItem("stressLess_staff")
                                   history.push({ pathname: "/" })
                               }}
                           >Logout <FiIcons.FiLogOut className="nav-logout" /></button>

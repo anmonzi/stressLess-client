@@ -1,0 +1,9 @@
+.button {
+	background-color: rgb(177, 201, 199);
+	border: rgb(177, 201, 199);
+}
+
+.button:focus {
+	outline: none;
+	box-shadow: none;
+}

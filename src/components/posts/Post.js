@@ -2,9 +2,9 @@ import React, { useEffect, useContext, useState } from "react"
 import { PostContext } from "./PostProvider"
 import { CommentList } from "../comments/CommentList"
 import { CommentForm } from "../comments/CommentForm"
+import { NavBarContext } from "../nav/NavBarProvider"
 import { useHistory } from 'react-router'
 import { Container, Row, Col, Button, Card } from "react-bootstrap"
-import { DateTime } from "luxon"
 import * as BsIcons from "react-icons/bs"
 import * as AiIcons from "react-icons/ai"
 import Swal from "sweetalert2"
@@ -14,11 +14,16 @@ import "./Post.css"
 export const Post = ({ postObject }) => {
     // returns individual posts to post list
     const { deletePost, getPosts } = useContext(PostContext)
+    const { user, checkIfStaff } = useContext(NavBarContext)
     const history = useHistory()
 
     const [ showComments, setShowComments ] = useState(false)
     const [ showCommentInput, setShowCommentInput ] = useState(false)
     const [ showButton, setShowButton ] = useState(true)
+
+    useEffect(() => {
+        checkIfStaff()
+    }, [])
 
     // making date readable to humans
     // const monthDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
@@ -57,11 +62,25 @@ export const Post = ({ postObject }) => {
         <>
             <Card>
                 <Card.Body>
+                    {/* Admin remove button for app user posts */}
+                    {
+                        (user.is_staff && !postObject.owner)
+                        ? <div className="admin-button"><Button variant="danger" onClick={() => {
+                            handleDeletePost(postObject.id)
+                            }}>Remove</Button></div>
+                        : null
+                    }
                     <Card.Subtitle>{postObject.app_user?.full_name}</Card.Subtitle>
                     <Card.Subtitle className="text-muted"><div>{humanMonthDate} at {humanTime}</div></Card.Subtitle>
                     <Card.Title className="card-title">{postObject.title}</Card.Title>
                     <Card.Text><div>{postObject.content}</div></Card.Text>
-                    <Card.Img src={postObject.image_url} />
+                    {/* Is there an image attached to the post? */}
+                    {
+                        (postObject.image_url !== "")
+                        ? <Card.Img src={postObject.image_url} />
+                        : null
+                    }
+                    {/* Check if user is owner of post to view edit/delete */}
                     {
                         (postObject.owner)
                         // if owner of post show edit and delete buttons
@@ -83,6 +102,7 @@ export const Post = ({ postObject }) => {
                             : null
                         }
                     </Card.Subtitle>
+                    {/* Show comments is false at page load, if comment count make clickable to show comments */}
                     <Card.Link onClick={() => setShowComments(!showComments)}>
                         {
                             (postObject.comment_count > 0)
@@ -94,22 +114,25 @@ export const Post = ({ postObject }) => {
                     </Card.Link>
                     {
                         (showComments)
-                        // if user clicks above comment count link, showComment state becomes TRUE
+                        // if user clicks above comment count link, showComments state becomes TRUE
+                        // Show list of comments
                         ? <><CommentList postId={postObject.id}/></>
                         : null
                     }
                 </Card.Body>
+                {/* Comment button hide/show and comment input hide/show */}
                 <Card.Body>
                     {
+                        // Showbutton (comment button) is true at page load, onclick set it to false
                         (showButton)
                         ? <Button onClick={() => {
                             setShowButton(!showButton)
+                            // show comment input is false at page load, set it to true
                             setShowCommentInput(!showCommentInput)
                           }}>Comment</Button>
                         : null
                     }
-                </Card.Body>
-                <Card.Body>
+                    {/* Show comment form is true, so pass props to comment form component */}
                     {
                         (showCommentInput)
                         ? <>

@@ -14,7 +14,7 @@ body, button, input, select, textarea {
 
 body {
 	/* background-image: url(game.jpg); */
-  	background-color: #ededed;
+  	background-color: rgb(237, 239, 242);
 	background-position: center;
 	background-size: cover;
 	background-attachment: fixed;
@@ -34,7 +34,7 @@ code {
 }
 
 .fakeLink {
-    color: -webkit-link;
+    color: rgb(143, 166, 164);
     cursor: pointer;
     text-decoration: none;
     background: none;
@@ -48,7 +48,8 @@ code {
 }
 
 .fakeLink:hover {
-    background-color: #1a83ff;
+    background-color: rgb(75, 78, 89);
+	color: #fff !important;
 }
 
 .nav-item {
@@ -106,8 +107,3 @@ code {
 	margin: 1rem 0;
 	box-shadow: 0px 0px 6px rgb(227, 227, 227);
 }
-
-/* .button {
-	background-color: orange;
-	border: orange;
-} */

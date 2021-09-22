@@ -60,7 +60,7 @@ export const ReflectionInput = () => {
                                 name="content" value={currentReflection.content}
                                 onChange={handleUserInput} placeholder="What's up?" required/>
                                 <Form.Group className="post-form-btn-group">
-                                    <Button type="submit" className="post-form-btn" onClick={handleSaveReflection}>Submit</Button>
+                                    <Button type="submit" className="post-form-btn button" onClick={handleSaveReflection}>Submit</Button>
                                 </Form.Group>
                             </Form.Group>
                         </Form>

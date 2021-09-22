@@ -26,7 +26,7 @@ export const Achievement = ({ achievement }) => {
                         <Card.Subtitle className="text-muted card-sub"><div>{humanDate}</div></Card.Subtitle>
                         <Card.Text><div>{achievement.content}</div></Card.Text>
                         <Card.Body className="post-btn-group">
-                            <Button onClick={() => {
+                            <Button className="button" onClick={() => {
                                 deleteAchievement(achievement.id)
                             }}>Delete</Button>
                         </Card.Body>

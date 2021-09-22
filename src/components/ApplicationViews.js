@@ -11,6 +11,11 @@ import { CommunityFeed } from "./community/CommunityFeed"
 import { PostProvider } from "./posts/PostProvider"
 import { PostForm } from "./posts/PostForm"
 import { CommentProvider } from "./comments/CommentProvider"
+import { ResourceProvider } from "./resources/ResourceProvider"
+import { ResourceList } from "./resources/ResourceList"
+import { ProfileProvider } from "./profile/ProfileProvider"
+import { Profile } from "./profile/Profile"
+import { MotivationProvider } from "./motivation/MotivationProvider"
 
 
 export const ApplicationViews = () => {
@@ -19,17 +24,19 @@ export const ApplicationViews = () => {
         <DashboardProvider>
             <PriorityProvider>
                 <ReflectionProvider>
-                    <Route exact path="/dashboard">
-                        <Dashboard />
-                    </Route>
+                    <MotivationProvider>
+                        <Route exact path="/dashboard">
+                            <Dashboard />
+                        </Route>
 
-                    <Route exact path="/priority/new">
-                        <PriorityForm />
-                    </Route>
+                        <Route exact path="/priority/new">
+                            <PriorityForm />
+                        </Route>
 
-                    <Route exact path="/priority/:priorityId(\d+)/edit">
-                        <PriorityForm />
-                    </Route>
+                        <Route exact path="/priority/:priorityId(\d+)/edit">
+                            <PriorityForm />
+                        </Route>
+                    </MotivationProvider>
                 </ReflectionProvider>
             </PriorityProvider>
         </DashboardProvider>
@@ -57,5 +64,19 @@ export const ApplicationViews = () => {
                 </Route>
             </CommentProvider>
         </PostProvider>
+
+        {/* Render resources for users here */}
+        <ResourceProvider>
+            <Route exact path="/resources">
+                <ResourceList />
+            </Route>
+        </ResourceProvider>
+
+        {/* Render user profile here */}
+        <ProfileProvider>
+            <Route exact path="/profile">
+                <Profile/>
+            </Route>
+        </ProfileProvider>
     </>
 }
