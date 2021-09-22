@@ -4,9 +4,10 @@ export const MotivationContext = createContext()
 
 export const MotivationProvider = (props) => {
     const [motivation, setMotivation] = useState({})
+    const [allMotivations, setAllMotivations] = useState([])
 
-    const getMotivation = () => {
-        return fetch("http://localhost:8000/motivation", { 
+    const getNewestMotivation = () => {
+        return fetch("http://localhost:8000/motivations?sortBy=date", { 
             method: "GET",
             headers: {
               Authorization: `Token ${localStorage.getItem("stressLess_user_id")}`
@@ -17,10 +18,23 @@ export const MotivationProvider = (props) => {
         .then(setMotivation)
       }
 
+      const getAllMotivations = () => {
+        return fetch("http://localhost:8000/motivations", { 
+            method: "GET",
+            headers: {
+              Authorization: `Token ${localStorage.getItem("stressLess_user_id")}`
+            }
+          }
+        )
+        .then((res) => res.json())
+        .then(setAllMotivations)
+      }
+
       return (
           <MotivationContext.Provider value={
               {
-                  motivation, getMotivation
+                  motivation, getNewestMotivation,
+                  allMotivations, getAllMotivations
               }
           }>
               {props.children}
