@@ -8,7 +8,7 @@ import * as BsIcons from "react-icons/bs"
 
 export const AppUser = ({ userObj }) => {
     // returns individual reflections to reflection list
-
+    const { changeUserStatus } = useContext(AppUserContext)
     // making date readable to humans
     // const monthDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
     const date = new Date(userObj.user?.date_joined)
@@ -39,7 +39,9 @@ export const AppUser = ({ userObj }) => {
                             </Card.Text>
                             {
                                 (userObj.user?.is_active)
-                                ? <><Button className="button">Active</Button></>
+                                ? <><Button type="submit" onClick={() => 
+                                    changeUserStatus(userObj.user?.id)}
+                                    className="button">Active</Button></>
                                 : <><Button variant="secondary">Inactive</Button></>
                             }
                             
@@ -62,7 +64,9 @@ export const AppUser = ({ userObj }) => {
                         </Card.Text>
                         {
                             (userObj.user?.is_active)
-                            ? <><Button className="button">Active</Button></>
+                            ? <><Button type="submit" onClick={() => 
+                                changeUserStatus(userObj.user?.id)}
+                                className="button">Active</Button></>
                             : <><Button variant="secondary">Inactive</Button></>
                         }
                         

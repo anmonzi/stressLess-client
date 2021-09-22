@@ -15,10 +15,22 @@ export const AppUserProvider = (props) => {
         .then(setAppUsers)
     }
 
+
+    const changeUserStatus = userId => {
+        return fetch(`http://localhost:8000/admin/${ userId }/deactivate`, {
+            method: "PUT",
+            headers:{
+                Authorization: `Token ${localStorage.getItem("lu_token")}`
+            }
+        })
+        .then(getAppUsers)
+    }
+
     return (
         <AppUserContext.Provider value={
             {
-                appUsers, getAppUsers
+                appUsers, getAppUsers,
+                changeUserStatus
             }
         }>
             {props.children}
