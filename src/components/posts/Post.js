@@ -80,7 +80,7 @@ export const Post = ({ postObject }) => {
                         ? <Card.Img src={postObject.image_url} />
                         : null
                     }
-                    {/* Check if user is owner of post to view edit/delete */}
+                    {/* Check if user is owner of post to view edit/delete buttons */}
                     {
                         (postObject.owner)
                         // if owner of post show edit and delete buttons
@@ -97,8 +97,8 @@ export const Post = ({ postObject }) => {
                     }
                     <Card.Subtitle>
                         {
-                            (postObject.reaction_counter > 0)
-                            ? <><div>{postObject.reaction_counter} Reactions</div></>
+                            (postObject.reactions_count > 0)
+                            ? <><div>{postObject.reactions_count} Reactions</div></>
                             : null
                         }
                     </Card.Subtitle>
@@ -107,8 +107,10 @@ export const Post = ({ postObject }) => {
                         {
                             (postObject.comment_count > 0)
                             // if there are comments, show comment count under post
-                            ? <><Card.Link className="comment-count">
-                                {postObject.comment_count} Comments</Card.Link></>
+                            ? <>
+                                <Card.Link className="comment-count">
+                                {postObject.comment_count} Comments</Card.Link>
+                              </>
                             : null
                         }
                     </Card.Link>
@@ -132,6 +134,7 @@ export const Post = ({ postObject }) => {
                           }}>Comment</Button>
                         : null
                     }
+                    <Button>Reaction Component Here</Button>
                     {/* Show comment form is true, so pass props to comment form component */}
                     {
                         (showCommentInput)
