@@ -20,7 +20,7 @@ export const AppUserProvider = (props) => {
         return fetch(`http://localhost:8000/admin/${ userId }/deactivate`, {
             method: "PUT",
             headers:{
-                Authorization: `Token ${localStorage.getItem("lu_token")}`
+                Authorization: `Token ${localStorage.getItem("stressLess_user_id")}`
             }
         })
         .then(getAppUsers)
