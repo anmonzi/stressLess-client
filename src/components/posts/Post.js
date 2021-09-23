@@ -3,6 +3,7 @@ import { PostContext } from "./PostProvider"
 import { CommentList } from "../comments/CommentList"
 import { CommentForm } from "../comments/CommentForm"
 import { NavBarContext } from "../nav/NavBarProvider"
+import { ReactionList } from "../reactions/ReactionList"
 import { useHistory } from 'react-router'
 import { Container, Row, Col, Button, Card } from "react-bootstrap"
 import * as BsIcons from "react-icons/bs"
@@ -134,7 +135,7 @@ export const Post = ({ postObject }) => {
                           }}>Comment</Button>
                         : null
                     }
-                    <Button>Reaction Component Here</Button>
+                    <ReactionList/>
                     {/* Show comment form is true, so pass props to comment form component */}
                     {
                         (showCommentInput)

@@ -60,6 +60,26 @@ export const PostProvider = (props) => {
         .then(getPosts)
     }
 
+    const favoritePost = postId => {
+        return fetch(`http://localhost:8000/posts/${postId}/favorite_post`, {
+            method: "POST",
+            headers: {
+                Authorization: `Token ${localStorage.getItem("stressLess_user_id")}`
+            }
+        })
+        .then(getPosts)
+    }
+
+    const unfavoritePost = postId => {
+        return fetch(`http://localhost:8000/posts/${postId}/favorite_post`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Token ${localStorage.getItem("stressLess_user_id")}`
+            }
+        })
+        .then(getPosts)
+    }
+
 
     return (
         <PostContext.Provider value={
