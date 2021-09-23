@@ -15,7 +15,7 @@ export const PriorityList = () => {
     }, [])
 
     const sortedPriorities = priorities.sort((a, b) => {
-        return b.created_on.localeCompare(a.created_on)
+        return b.id - a.id
     })
 
 

@@ -49,3 +49,15 @@ a {
 	outline: none;
 	box-shadow: none;
 }
+
+.post-counters {
+    display: flex;
+}
+
+.react-counter {
+    margin-right: 2rem;
+}
+
+.reaction {
+    margin-left: 4rem;
+}

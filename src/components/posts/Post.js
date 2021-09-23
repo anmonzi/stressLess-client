@@ -3,7 +3,7 @@ import { PostContext } from "./PostProvider"
 import { CommentList } from "../comments/CommentList"
 import { CommentForm } from "../comments/CommentForm"
 import { NavBarContext } from "../nav/NavBarProvider"
-import { ReactionList } from "../reactions/ReactionList"
+import { Reaction } from "../reactions/Reaction"
 import { useHistory } from 'react-router'
 import { Container, Row, Col, Button, Card } from "react-bootstrap"
 import * as BsIcons from "react-icons/bs"
@@ -96,13 +96,12 @@ export const Post = ({ postObject }) => {
                           </>
                         : null
                     }
-                    <Card.Subtitle>
+                    <Card.Subtitle className="post-counters">
                         {
                             (postObject.reactions_count > 0)
-                            ? <><div>{postObject.reactions_count} Reactions</div></>
+                            ? <><div className="react-counter">{postObject.reactions_count} Reactions</div></>
                             : null
                         }
-                    </Card.Subtitle>
                     {/* Show comments is false at page load, if comment count make clickable to show comments */}
                     <Card.Link onClick={() => setShowComments(!showComments)}>
                         {
@@ -115,6 +114,7 @@ export const Post = ({ postObject }) => {
                             : null
                         }
                     </Card.Link>
+                    </Card.Subtitle>
                     {
                         (showComments)
                         // if user clicks above comment count link, showComments state becomes TRUE
@@ -135,7 +135,7 @@ export const Post = ({ postObject }) => {
                           }}>Comment</Button>
                         : null
                     }
-                    <ReactionList/>
+                    <Reaction post={postObject}/>
                     {/* Show comment form is true, so pass props to comment form component */}
                     {
                         (showCommentInput)

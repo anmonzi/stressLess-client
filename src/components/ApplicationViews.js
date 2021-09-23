@@ -16,7 +16,7 @@ import { ResourceList } from "./resources/ResourceList"
 import { ProfileProvider } from "./profile/ProfileProvider"
 import { Profile } from "./profile/Profile"
 import { MotivationProvider } from "./motivation/MotivationProvider"
-import { ReactionProvider } from "./reactions/ReactionProvider"
+
 
 
 export const ApplicationViews = () => {
@@ -52,19 +52,17 @@ export const ApplicationViews = () => {
         {/* Render community feed here (posts & comments) */}
         <PostProvider>
             <CommentProvider>
-                <ReactionProvider>
-                    <Route exact path="/community">
-                        <CommunityFeed />
-                    </Route>
+                <Route exact path="/community">
+                    <CommunityFeed />
+                </Route>
 
-                    <Route exact path="/post/new">
-                        <PostForm />
-                    </Route>
+                <Route exact path="/post/new">
+                    <PostForm />
+                </Route>
 
-                    <Route exact path="/post/:postId(\d+)/edit">
-                        <PostForm />
-                    </Route>
-                </ReactionProvider>
+                <Route exact path="/post/:postId(\d+)/edit">
+                    <PostForm />
+                </Route>
             </CommentProvider>
         </PostProvider>
 
