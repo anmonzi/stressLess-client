@@ -67,7 +67,9 @@ export const AppUser = ({ userObj }) => {
                             ? <><Button type="submit" onClick={() => 
                                 changeUserStatus(userObj.user?.id)}
                                 className="button">Active</Button></>
-                            : <><Button variant="secondary">Inactive</Button></>
+                            : <><Button variant="secondary" onClick={() => 
+                                changeUserStatus(userObj.user?.id)}
+                                className="inactive-button">Inactive</Button></>
                         }
                         
                     </Card.Body>

@@ -20,9 +20,9 @@ export const PostList = () => {
 
     return (
         <>
-            <Container className="post-container">
-                <Row>
-                    <Col> 
+            <Container >
+                <Row className="post-container">
+                    <Col md={8}> 
                         {
                             sortedPosts.map(post => {
                                 return <Post postObject={post} key={post.id} />
