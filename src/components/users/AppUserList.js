@@ -19,8 +19,8 @@ export const AppUserList = () => {
     return (
         <>
             <Container>
-                <Row>
-                    <Col>
+                <Row className="post-container">
+                    <Col md={8}>
                     <h4>Current StressLess Users</h4>
                         {
                             appUsers.map(user => {
