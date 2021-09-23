@@ -7,3 +7,23 @@
     background-color: rgb(75, 78, 89);
 	border: rgb(177, 201, 199);
 }
+
+.com-button {
+	background-color: rgb(143, 166, 164);
+	border: rgb(177, 201, 199);
+}
+
+.com-button:hover {
+    background-color: rgb(117, 136, 135);
+	border: rgb(177, 201, 199);
+}
+
+.can-button:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+.com-button:focus {
+	outline: none;
+	box-shadow: none;
+}

@@ -52,9 +52,14 @@ export const PostForm = () => {
             imageURL: currentPost.imageURL,
             publicationDate: now.toISO()
         }
-        // send POST request to API
-        createPost(newPost)
-            .then(() => history.push("/community"))
+
+        if (currentPost.title === "" || currentPost.content === "") {
+            return
+        } else {
+            // send POST request to API
+            createPost(newPost)
+                .then(() => history.push("/community"))
+        }
     }
 
     const handleEditPost = (event) => {
@@ -108,12 +113,12 @@ return (
                     {
                         (postId)
                         ? <>
-                            <Button type="submit" className="post-form-btn" onClick={handleEditPost}>Save</Button>
-                            <Button className="post-form-btn" onClick={() => history.goBack()}>Back</Button>
+                            <Button type="submit" className="post-form-btn button" onClick={handleEditPost}>Save</Button>
+                            <Button className="post-form-btn can-button" onClick={() => history.goBack()}>Back</Button>
                           </>
                         : <>
-                            <Button type="submit" className="post-form-btn" onClick={handleSavePost}>Submit</Button>
-                            <Button className="post-form-btn" onClick={() => history.goBack()}>Back</Button>
+                            <Button type="submit" className="post-form-btn button" onClick={handleSavePost}>Submit</Button>
+                            <Button className="post-form-btn can-button" onClick={() => history.goBack()}>Back</Button>
                         </>
                     }
                     

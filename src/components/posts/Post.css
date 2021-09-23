@@ -21,10 +21,12 @@
 }
 
 a {
+    color: rgb(106, 139, 158);
     text-decoration: none;
 }
 
 .comment-count:hover {
+    color: rgb(85, 112, 128);
     cursor: pointer;
 }
 
@@ -41,4 +43,9 @@ a {
 .post-button:hover {
     background-color: rgb(136, 140, 160);
 	border: rgb(177, 201, 199);
+}
+
+.post-button:focus {
+	outline: none;
+	box-shadow: none;
 }

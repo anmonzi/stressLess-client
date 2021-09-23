@@ -72,7 +72,7 @@ export const CommentForm = ({ inputCollapse, buttonHide, post, commentShow }) =>
                                 name="content" value={currentComment.content}
                                 onChange={handleUserInput} required/>
                                 <Form.Group className="post-btn-group">
-                                    <Button className="post-form-btn post-button" onClick={handleSaveComment}>Submit</Button>
+                                    <Button className="post-form-btn com-button" onClick={handleSaveComment}>Submit</Button>
                                     <Button className="post-form-btn can-button" onClick={() => {
                                         buttonHide(true)
                                         inputCollapse(!inputCollapse)
