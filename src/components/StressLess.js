@@ -6,6 +6,8 @@ import { NavBar } from "./nav/NavBar.js"
 import { Login } from "./auth/Login.js"
 import { Register } from "./auth/Register.js"
 import { NavBarProvider } from "./nav/NavBarProvider"
+import { LandingPage } from "./auth/LandingPage"
+
 
 
 export const StressLess = () => {
@@ -36,7 +38,10 @@ export const StressLess = () => {
             }
         }} />
 
-        <Route path="/login" render={Login} />
+        <Route path="/login">
+            <LandingPage/>
+        </Route>
+        {/* <Route path="/login" render={Login} /> */}
         <Route path="/register" render={Register} />
         </>
 

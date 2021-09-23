@@ -8,7 +8,7 @@ import * as BsIcons from "react-icons/bs"
 
 export const AppUser = ({ userObj }) => {
     // returns individual reflections to reflection list
-
+    const { changeUserStatus } = useContext(AppUserContext)
     // making date readable to humans
     // const monthDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
     const date = new Date(userObj.user?.date_joined)
@@ -20,29 +20,59 @@ export const AppUser = ({ userObj }) => {
     
     return (
         <>
-            <Card>
-                <Card.Body>
-                    <Card.Text><div>{userObj.full_name}</div></Card.Text>
-                    <Card.Subtitle className="text-muted card-sub">
-                        <div>Date Joined: {humanMonthDate} at {humanTime}</div>
-                    </Card.Subtitle>
-                    <Card.Text><div>Username: {userObj.user?.username}</div></Card.Text>
-                    <Card.Text>
-                        <div>Is Staff?</div>
+            {
+                (userObj.user?.is_active)
+                ?   <Card>
+                        <Card.Body>
+                            <Card.Text><div>{userObj.full_name}</div></Card.Text>
+                            <Card.Subtitle className="text-muted card-sub">
+                                <div>Date Joined: {humanMonthDate} at {humanTime}</div>
+                            </Card.Subtitle>
+                            <Card.Text><div>Username: {userObj.user?.username}</div></Card.Text>
+                            <Card.Text>
+                                <div>Is Staff?</div>
+                                {
+                                    (userObj.user?.is_staff)
+                                    ? <>True</>
+                                    : <>False</>
+                                }
+                            </Card.Text>
+                            {
+                                (userObj.user?.is_active)
+                                ? <><Button type="submit" onClick={() => 
+                                    changeUserStatus(userObj.user?.id)}
+                                    className="button">Active</Button></>
+                                : <><Button variant="secondary">Inactive</Button></>
+                            }
+                            
+                        </Card.Body>
+                    </Card>
+                : <Card bg="light" border="dark">
+                    <Card.Body>
+                        <Card.Text><div>{userObj.full_name}</div></Card.Text>
+                        <Card.Subtitle className="text-muted card-sub">
+                            <div>Date Joined: {humanMonthDate} at {humanTime}</div>
+                        </Card.Subtitle>
+                        <Card.Text><div>Username: {userObj.user?.username}</div></Card.Text>
+                        <Card.Text>
+                            <div>Is Staff?</div>
+                            {
+                                (userObj.user?.is_staff)
+                                ? <>True</>
+                                : <>False</>
+                            }
+                        </Card.Text>
                         {
-                            (userObj.user?.is_staff)
-                            ? <>True</>
-                            : <>False</>
+                            (userObj.user?.is_active)
+                            ? <><Button type="submit" onClick={() => 
+                                changeUserStatus(userObj.user?.id)}
+                                className="button">Active</Button></>
+                            : <><Button variant="secondary">Inactive</Button></>
                         }
-                    </Card.Text>
-                    {
-                        (userObj.user?.is_active)
-                        ? <><Button className="button">Active</Button></>
-                        : <><Button variant="secondary">Inactive</Button></>
-                    }
-                    
-                </Card.Body>
-            </Card>   
+                        
+                    </Card.Body>
+                </Card>
+            }
         </>
     )
 }

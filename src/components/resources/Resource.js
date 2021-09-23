@@ -19,10 +19,10 @@ export const Resource = ({ resourceObj }) => {
         <>
         <Card>
             <Card.Body>
-                <Card.Title><div>{resourceObj.title}</div></Card.Title>
+                <Card.Title className="res-card-title"><div>{resourceObj.title}</div></Card.Title>
                 <Card.Subtitle className="text-muted card-sub"><div>{humanDate}</div></Card.Subtitle>
                 <Card.Text><div>{resourceObj.content}</div></Card.Text>
-                <Card.Link href={resourceObj.source_link} target="_blank">View Article</Card.Link>
+                <Card.Link className="res-link" href={resourceObj.source_link} target="_blank">View Article</Card.Link>
             </Card.Body>
         </Card>
         </>

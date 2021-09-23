@@ -8,11 +8,11 @@ import * as AiIcons from "react-icons/ai"
 
 export const Motivation = () => {
     // returns indivdual achievements to achievement list
-    const { motivation, getMotivation } = useContext(MotivationContext)
+    const { motivation, getNewestMotivation } = useContext(MotivationContext)
     const history = useHistory()
 
     useEffect(() => {
-        getMotivation()
+        getNewestMotivation()
     }, [])
     
     
@@ -23,7 +23,7 @@ export const Motivation = () => {
 
     return (
         <>
-            {motivation.title}
+        {motivation.title}
         </>
     )
 }

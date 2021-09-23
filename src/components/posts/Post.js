@@ -127,7 +127,7 @@ export const Post = ({ postObject }) => {
                     {
                         // Showbutton (comment button) is true at page load, onclick set it to false
                         (showButton)
-                        ? <Button onClick={() => {
+                        ? <Button className="post-button" onClick={() => {
                             setShowButton(!showButton)
                             // show comment input is false at page load, set it to true
                             setShowCommentInput(!showCommentInput)

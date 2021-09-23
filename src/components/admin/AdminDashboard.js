@@ -1,5 +1,7 @@
 import React, { useEffect, useContext, useState } from "react"
 import { DashboardContext } from "../dashboard/DashboardProvider"
+import { MotivationList } from "../motivation/MotivationList"
+import { MotivationForm } from "../motivation/MotivationForm"
 import { Container, Row, Col } from "react-bootstrap"
 import "../dashboard/Dashboard.css"
 
@@ -19,6 +21,18 @@ export const AdminDashboard = () => {
                     <Col xs={10} md={8}
                     className="dashboard-welcome">
                         <h2>Welcome to StressLess, {dashboard.app_user?.full_name}</h2>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <h3>Create a New Motivation</h3>
+                        <MotivationForm/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <h3>Motivation History</h3>
+                        <MotivationList/>
                     </Col>
                 </Row>
             </Container>
