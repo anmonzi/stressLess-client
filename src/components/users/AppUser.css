@@ -2,3 +2,8 @@
     background-color: rgb(163, 167, 191);
     color: #fff;
 }
+
+.inactive-button:focus {
+	outline: none;
+	box-shadow: none;
+}
