@@ -28,12 +28,14 @@ export const PriorityList = () => {
                 </Row>
                 <Row>
                     <Col>
-                        <Row>
-                            <Button 
-                                variant="outline-secondary"
-                                onClick={() => {history.push("/priority/new")}}>
-                                    Make New Priority
-                            </Button>
+                        <Row> 
+                            <Col className="post-container">
+                                <Button 
+                                    variant="outline-secondary"
+                                    onClick={() => {history.push("/priority/new")}}>
+                                        Make New Priority
+                                </Button>
+                            </Col>
                         </Row>
                         {
                             sortedPriorities.map(priority => {

@@ -32,3 +32,13 @@ a {
     display: flex;
     justify-content: end;
 }
+
+.post-button {
+	background-color: rgb(163, 167, 191);
+	border: rgb(177, 201, 199);
+}
+
+.post-button:hover {
+    background-color: rgb(136, 140, 160);
+	border: rgb(177, 201, 199);
+}

@@ -6,7 +6,7 @@ import { Container, Row, Col, Button, Card, Form } from "react-bootstrap"
 import * as BsIcons from "react-icons/bs"
 import * as AiIcons from "react-icons/ai"
 import Swal from "sweetalert2"
-
+import "./Comment.css"
 
 export const Comment = ({ commentObj, post }) => {
     // returns individual comment to comment list
@@ -130,8 +130,8 @@ export const Comment = ({ commentObj, post }) => {
                                                     name="content" value={currentComment.content}
                                                     onChange={handleUserInput} required/>
                                                     <Form.Group className="post-btn-group">
-                                                        <Button className="post-form-btn" onClick={handleEditComment}>Save</Button>
-                                                        <Button className="post-form-btn" onClick={() => 
+                                                        <Button className="post-form-btn post-button" onClick={handleEditComment}>Save</Button>
+                                                        <Button className="post-form-btn can-button" onClick={() => 
                                                             setEdit(!edit)}>Cancel</Button>
                                                     </Form.Group>
                                                 </Form.Group>

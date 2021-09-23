@@ -1,0 +1,9 @@
+.can-button {
+	background-color: rgb(106, 110, 126);
+	border: rgb(177, 201, 199);
+}
+
+.can-button:hover {
+    background-color: rgb(75, 78, 89);
+	border: rgb(177, 201, 199);
+}
