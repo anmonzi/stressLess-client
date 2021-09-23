@@ -4,7 +4,7 @@ import { PostContext } from "../posts/PostProvider"
 import { useHistory } from 'react-router'
 import { Container, Row, Col, Button, Form } from "react-bootstrap"
 import { DateTime } from "luxon"
-
+import "./Comment.css"
 
 
 export const CommentForm = ({ inputCollapse, buttonHide, post, commentShow }) => {
@@ -72,8 +72,8 @@ export const CommentForm = ({ inputCollapse, buttonHide, post, commentShow }) =>
                                 name="content" value={currentComment.content}
                                 onChange={handleUserInput} required/>
                                 <Form.Group className="post-btn-group">
-                                    <Button className="post-form-btn" onClick={handleSaveComment}>Submit</Button>
-                                    <Button className="post-form-btn" onClick={() => {
+                                    <Button className="post-form-btn com-button" onClick={handleSaveComment}>Submit</Button>
+                                    <Button className="post-form-btn can-button" onClick={() => {
                                         buttonHide(true)
                                         inputCollapse(!inputCollapse)
                                     }}>Cancel</Button>

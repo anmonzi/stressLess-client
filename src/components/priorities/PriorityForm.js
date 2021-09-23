@@ -90,12 +90,12 @@ return (
                   {
                       (priorityId)
                       ? <>
-                          <Button type="submit" className="post-form-btn" onClick={handleEditPriority}>Save</Button>
-                          <Button className="post-form-btn" onClick={() => history.goBack()}>Back</Button>
+                          <Button type="submit" className="post-form-btn button" onClick={handleEditPriority}>Save</Button>
+                          <Button className="post-form-btn button" onClick={() => history.goBack()}>Back</Button>
                         </>
                       : <>
-                          <Button type="submit" className="post-form-btn" onClick={handleSavePriority}>Submit</Button>
-                          <Button className="post-form-btn" onClick={() => history.goBack()}>Back</Button>
+                          <Button type="submit" className="post-form-btn button" onClick={handleSavePriority}>Submit</Button>
+                          <Button className="post-form-btn button" onClick={() => history.goBack()}>Back</Button>
                         </>
                   }
                 </Form.Group>

@@ -2,7 +2,8 @@ import React, { useEffect, useContext, useState } from "react"
 import { ResourceContext } from "./ResourceProvider"
 import { Resource } from "./Resource"
 import { useHistory } from 'react-router'
-import { Container, Row, Col, Button } from "react-bootstrap"
+import * as BsIcons from "react-icons/bs"
+import { Container, Row, Col, Button, OverlayTrigger, Tooltip } from "react-bootstrap"
 
 
 export const ResourceList = () => {
@@ -23,6 +24,12 @@ export const ResourceList = () => {
                 <Row>
                     <Col>
                         <h2>Current StressLess Resources</h2>
+                        <OverlayTrigger
+                            placement="top"
+                            overlay={<Tooltip>Helpful resources to look into
+                            </Tooltip>}>
+                            <span><BsIcons.BsFillInfoCircleFill /></span> 
+                            </OverlayTrigger>
                         {
                             resources.map(resource => {
                                 return <Resource resourceObj={resource} key={resource.id} />

@@ -2,7 +2,8 @@ import React, { useEffect, useContext, useState } from "react"
 import { PriorityContext } from "./PriorityProvider"
 import { useHistory } from 'react-router'
 import { Priority } from "./Priority"
-import { Container, Row, Col, Button } from "react-bootstrap"
+import * as BsIcons from "react-icons/bs"
+import { Container, Row, Col, Button, OverlayTrigger, Tooltip } from "react-bootstrap"
 
 
 export const PriorityList = () => {
@@ -23,17 +24,26 @@ export const PriorityList = () => {
             <Container>
                 <Row>
                     <Col>
-                        <h4>Your Current Priorities:</h4>
+                        <h4>
+                            <OverlayTrigger
+                            placement="top"
+                            overlay={<Tooltip>Create small, manageable priorities you'd like
+                                to implement in your daily schedule.
+                            </Tooltip>}>
+                            <span><BsIcons.BsFillInfoCircleFill /></span> 
+                            </OverlayTrigger> Your Current Priorities:</h4>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <Row>
-                            <Button 
-                                variant="outline-secondary"
-                                onClick={() => {history.push("/priority/new")}}>
-                                    Make New Priority
-                            </Button>
+                        <Row> 
+                            <Col className="post-container">
+                                <Button 
+                                    variant="outline-secondary"
+                                    onClick={() => {history.push("/priority/new")}}>
+                                        Make New Priority
+                                </Button>
+                            </Col>
                         </Row>
                         {
                             sortedPriorities.map(priority => {

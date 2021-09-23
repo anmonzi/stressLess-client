@@ -52,8 +52,8 @@ export const MotivationForm = () => {
 
     return (
         <>
-            <Container>
-                <Row>
+            <Container >
+                <Row className="post-container">
                     <Col className="form-input" md={6}>
                         <Form>
                             <Form.Group>

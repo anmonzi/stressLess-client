@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import logo from "../../images/StressLessLogo.png"
 import "./Auth.css"
 
 export const Register = (props) => {
@@ -54,8 +55,12 @@ export const Register = (props) => {
             </dialog>
             <div className="form--login--container">
                 <div className="form--flex">
+                
                     <form className="form--login" onSubmit={handleRegister}>
-                        <h1 className="h3 mb-3 font-weight-normal">Register an account for StressLess</h1>
+                        <div className="app-logo-flex">
+                            <img className="app-logo" src={logo} />
+                        </div>
+                        <h1 className="h3 mb-3 font-weight-normal login-header">Register an account for StressLess</h1>
                         <fieldset>
                             <label htmlFor="firstName"> First Name </label>
                             <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First Name" required autoFocus />

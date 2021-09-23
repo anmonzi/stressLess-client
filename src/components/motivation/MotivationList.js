@@ -20,7 +20,7 @@ export const MotivationList = () => {
     return (
         <>
             <Container className="post-container">
-                <Row>
+                <Row className="post-container">
                     <Col> 
                         {
                             sortedMotivations.map(motivation => {

@@ -23,7 +23,7 @@ export const Motivation = () => {
 
     return (
         <>
-            {motivation.title}
+        {motivation.title}
         </>
     )
 }

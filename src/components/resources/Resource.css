@@ -1,3 +1,7 @@
-.card-title {
+.res-card-title {
     margin: 0 0 .5rem 0;
+}
+
+.res-link:hover {
+    color: rgb(85, 112, 128);
 }

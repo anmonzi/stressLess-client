@@ -1,13 +1,17 @@
 import React from "react"
+import { useHistory } from "react-router"
+import { Container, Row, Col, Button, Card, Form } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import logo from "../../images/StressLessLogo.png"
 import "./Auth.css"
 
 
-export const Login = props => {
+export const Login = (props) => {
     const email = React.createRef()
     const password = React.createRef()
     const invalidDialog = React.createRef()
     const inactiveDialog = React.createRef()
+    const history = useHistory()
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -28,12 +32,12 @@ export const Login = props => {
                 if ("valid" in res && res.valid && "token" in res && "is_staff" in res && res.is_staff) {
                     localStorage.setItem( "stressLess_user_id", res.token )
                     localStorage.setItem( "stressLess_staff", res.is_staff )
-                    props.history.push("/admin/dashboard")
+                    history.push("/admin/dashboard")
                 } else if ("valid" in res && res.valid === false) {
                     inactiveDialog.current.showModal()
                 } else if ("valid" in res && res.valid && "token" in res) {
                     localStorage.setItem( "stressLess_user_id", res.token )
-                    props.history.push("/dashboard")
+                    history.push("/dashboard")
                 } else {
                     invalidDialog.current.showModal()
                 }
@@ -55,9 +59,9 @@ export const Login = props => {
             
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Welcome to StressLess</h1>
-                    <h2>Please sign in</h2>
                     <div className="form--login--flex">
+                    <img className="app-logo" src={logo} />
+                    <h2 className="login-header">Please sign in</h2>
                         <div>
                             <fieldset>
                                 <label htmlFor="inputEmail"> Email address </label>

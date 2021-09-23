@@ -1,12 +1,13 @@
 import React, { useState, useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { NavBarContext } from "./NavBarProvider"
-import "./NavBar.css"
 import { Button, Offcanvas } from "react-bootstrap"
 import { useHistory } from "react-router"
 import * as FaIcons from "react-icons/fa"
 import * as FiIcons from "react-icons/fi"
 import * as BsIcons from "react-icons/bs"
+import logo from "../../images/StressLessLogo.png"
+import "./NavBar.css"
 
 export const NavBar = () => {
     const { user, checkIfStaff } = useContext(NavBarContext)
@@ -27,7 +28,7 @@ export const NavBar = () => {
   
         <Offcanvas show={show} onHide={handleShow}>
           <Offcanvas.Header closeButton className="navbar-header">
-            <Offcanvas.Title>StressLess</Offcanvas.Title>
+            <Offcanvas.Title><img src={logo} className="nav-logo" /></Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className="navbar-body">
             <ul className="navbar">
@@ -103,10 +104,10 @@ export const NavBar = () => {
               {
                 (user.is_staff)
                 ? <>
-                    <li className="navbar__item">
+                    {/* <li className="navbar__item">
                       <Link className="nav-link" to="/admin/resource/upload"
                         onClick={handleShow}><BsIcons.BsBook className="nav-icon" /> Resource Upload</Link>
-                    </li>
+                    </li> */}
                   </>
                 : <>
                     <li className="navbar__item">
