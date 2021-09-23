@@ -72,11 +72,12 @@ fieldset {
 }
 
 .link--register a {
-    color: white
+    color: rgb(75, 78, 89);
 }
 
 .link--register {
-    color: white;
+    margin-top: 2rem;
+    color: rgb(75, 78, 89);
 }
 
 
@@ -105,7 +106,7 @@ fieldset {
 
 .form--login--flex {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
@@ -114,4 +115,28 @@ fieldset {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.icon-container {
+    height: 100vh;
+}
+
+.app-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-logo {
+    margin-top: 1rem;
+    width: 50%;
+}
+
+.login-header {
+    margin: 3rem 0 1rem 0;
+}
+
+.app-logo-flex {
+    display: flex;
+    justify-content: center;
 }
