@@ -52,6 +52,7 @@ a {
 
 .post-counters {
     display: flex;
+    margin-top: 1rem;
 }
 
 .react-counter {
